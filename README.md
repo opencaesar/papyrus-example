@@ -2,10 +2,6 @@
 
 This is an example to showcase the [OML](https://opencaesar.github.io/oml/) adapter for the [Papyrus](https://www.eclipse.org/papyrus/) UML too. 
 
-It defines a DSL as an OML vocabulary bundle that extends the Eclipse UML vocabulary bundle and converts it to a Papyrus UML Profile. 
-
-It then applies the DSL profile to a Papyrus UML model and converts it to an OML description bundle that uses the DSL vocabulary bundle.
-
 ## Clone
 ```
   git clone https://github.com/opencaesar/papyrus-example.git
