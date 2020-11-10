@@ -1,0 +1,17 @@
+@dc:title "IMCE Profile Embedding"
+vocabulary <http://imce.jpl.nasa.gov/profile/mission-embedding> with # as mission-embedding {
+
+	extends <http://imce.jpl.nasa.gov/foundation/mission>
+	
+	extends <http://www.eclipse.org/uml2/5.0.0/UML-Annotations>
+	
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept mission:Component
+	
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept mission:Function
+		
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity mission:Performs
+
+}
