@@ -3,7 +3,7 @@
  */
 description='The Paprysus example descriptions project'
 group = 'io.opencaesar.ontologies'
-version = '0.1.0'
+version = '0.2.0'
 
 /* 
  * The Gradle task dependencies 
@@ -11,8 +11,7 @@ version = '0.1.0'
 buildscript {
 	repositories {
 		mavenLocal()
-		maven { url 'https://dl.bintray.com/opencaesar/papyrus-adapter' }
-		maven { url 'https://dl.bintray.com/opencaesar/owl-adapter' }
+		maven { url 'https://dl.bintray.com/opencaesar/adapters' }
 		maven { url 'https://dl.bintray.com/opencaesar/owl-tools' }
 		maven { url 'https://dl.bintray.com/opencaesar/oml-tools' }
 		maven { url 'https://dl.bintray.com/opencaesar/oml' }
@@ -34,7 +33,7 @@ buildscript {
  * Dependency versions
  */
 ext { 
-	papyrusVocabulariesVersion = '0.+'
+	papyrusVersion = '0.+'
 }
 
 /*
@@ -57,7 +56,7 @@ repositories {
  * The OML dependencies
  */
 dependencies {
-	oml "io.opencaesar.ontologies:papyrus-vocabularies:$papyrusVocabulariesVersion"
+	oml "io.opencaesar.ontologies:papyrus-vocabularies:$papyrusVersion"
 }
 
 /*
@@ -144,7 +143,8 @@ apply plugin: 'com.jfrog.bintray'
 ext.gh = [
 	dep: 'https://github.com',
 	org: 'opencaesar',
-	rep: 'ontologies'
+	rep: 'papyrus-example',
+	bintray: 'ontologies'
 ]
 
 bintray {
@@ -155,7 +155,7 @@ bintray {
 	override = true
 	pkg {
 		name = project.name
-		repo = gh.rep
+		repo = gh.bintray
 		userOrg = gh.org
 		desc = project.description
 		licenses = ['Apache-2.0']
@@ -168,5 +168,13 @@ bintray {
 			released  = new Date()
 		}
 	}
+}
 
+/*
+ * Integration with the Eclipse IDE
+ */ 
+apply plugin: 'eclipse'
+
+eclipse {
+    synchronizationTasks downloadDependencies
 }
