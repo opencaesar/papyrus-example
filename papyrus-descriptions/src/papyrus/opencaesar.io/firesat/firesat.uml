@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_GEDnQBpzEeuZ-_R5nNZXFw" name="firesat">
-  <packageImport xmi:type="uml:PackageImport" xmi:id="_GJPpQBpzEeuZ-_R5nNZXFw">
-    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
-  </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_HbD2cBpzEeuZ-_R5nNZXFw" name="Assembly1"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_JpeOwBpzEeuZ-_R5nNZXFw" name="Function1"/>
-  <packagedElement xmi:type="uml:Dependency" xmi:id="_NfjvgBpzEeuZ-_R5nNZXFw" client="_HbD2cBpzEeuZ-_R5nNZXFw" supplier="_JpeOwBpzEeuZ-_R5nNZXFw"/>
-</uml:Model>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:imce.mission="http://imce.jpl.nasa.gov/foundation/mission" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://imce.jpl.nasa.gov/foundation/mission ../imce/imce.profile.uml#_Iy5KgSsmEeuRLMNIFDA5Lg">
+  <uml:Model xmi:id="_GEDnQBpzEeuZ-_R5nNZXFw" name="firesat">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_GJPpQBpzEeuZ-_R5nNZXFw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HbD2cBpzEeuZ-_R5nNZXFw" name="Assembly1"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JpeOwBpzEeuZ-_R5nNZXFw" name="Function1"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_NfjvgBpzEeuZ-_R5nNZXFw" client="_HbD2cBpzEeuZ-_R5nNZXFw" supplier="_JpeOwBpzEeuZ-_R5nNZXFw"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_urNscCskEeuuWZd1dFxxUQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_urOTgCskEeuuWZd1dFxxUQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../imce/imce.profile.uml#__hp6kSsjEeuomPfOnbL-mA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="../imce/imce.profile.uml#_-wPrwCsjEeuomPfOnbL-mA"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_edFmECsmEeuuWZd1dFxxUQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_edG0MCsmEeuuWZd1dFxxUQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../imce/imce.profile.uml#_Iy5KgCsmEeuRLMNIFDA5Lg"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="../imce/imce.profile.uml#_H78UYCsmEeuRLMNIFDA5Lg"/>
+    </profileApplication>
+  </uml:Model>
+  <imce.mission:Component xmi:id="_vwWIgCskEeuuWZd1dFxxUQ" base_Class="_HbD2cBpzEeuZ-_R5nNZXFw"/>
+  <imce.mission:Function xmi:id="_wbU_MCskEeuuWZd1dFxxUQ" base_Class="_JpeOwBpzEeuZ-_R5nNZXFw"/>
+  <imce.mission:Performs xmi:id="_xObQECskEeuuWZd1dFxxUQ" base_Dependency="_NfjvgBpzEeuZ-_R5nNZXFw"/>
+</xmi:XMI>

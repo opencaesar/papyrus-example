@@ -1,5 +1,5 @@
 @dc:title "IMCE Profile Bundle"
-vocabulary bundle <http://imce.jpl.nasa.gov/profile/bundle> with # as imce-profile {
+vocabulary bundle <http://imce.jpl.nasa.gov/profile/bundle> with # as imce {
 
 	// DSL
 	extends <http://imce.jpl.nasa.gov/discipline/fse/bundle>

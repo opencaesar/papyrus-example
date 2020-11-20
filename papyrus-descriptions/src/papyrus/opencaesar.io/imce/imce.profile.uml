@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_H78UYCsmEeuRLMNIFDA5Lg" name="imce" URI="http://imce.jpl.nasa.gov/profile/bundle" metamodelReference="_IArqcCsmEeuRLMNIFDA5Lg">
+  <eAnnotations xmi:id="_Iy4jcCsmEeuRLMNIFDA5Lg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_Iy5KgCsmEeuRLMNIFDA5Lg" name="imce" nsURI="http://imce.jpl.nasa.gov/profile/bundle" nsPrefix="imce">
+      <eSubpackages xmi:id="_Iy5KgSsmEeuRLMNIFDA5Lg" name="mission" nsURI="http://imce.jpl.nasa.gov/foundation/mission" nsPrefix="imce.mission">
+        <eAnnotations xmi:id="_Iy5KgismEeuRLMNIFDA5Lg" source="http://www.eclipse.org/uml2/4.0.0/UML" references="_IyVw4CsmEeuRLMNIFDA5Lg"/>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Iy5KgysmEeuRLMNIFDA5Lg" name="Component">
+          <eAnnotations xmi:id="_Iy5KhCsmEeuRLMNIFDA5Lg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IyVw4SsmEeuRLMNIFDA5Lg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Iy5KhSsmEeuRLMNIFDA5Lg" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Iy5KhysmEeuRLMNIFDA5Lg" name="Function">
+          <eAnnotations xmi:id="_Iy5KiCsmEeuRLMNIFDA5Lg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IysWMSsmEeuRLMNIFDA5Lg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Iy5KiSsmEeuRLMNIFDA5Lg" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Iy5KiysmEeuRLMNIFDA5Lg" name="Performs">
+          <eAnnotations xmi:id="_Iy5KjCsmEeuRLMNIFDA5Lg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Iys9QysmEeuRLMNIFDA5Lg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Iy5KjSsmEeuRLMNIFDA5Lg" name="base_Dependency" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Dependency"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </eSubpackages>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:id="_IArqcCsmEeuRLMNIFDA5Lg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_IA33sCsmEeuRLMNIFDA5Lg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_IyVw4CsmEeuRLMNIFDA5Lg" name="mission" URI="http://imce.jpl.nasa.gov/foundation/mission">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_IyVw4SsmEeuRLMNIFDA5Lg" name="Component">
+      <ownedAttribute xmi:id="_IysWMCsmEeuRLMNIFDA5Lg" name="base_Class" association="_IyrvICsmEeuRLMNIFDA5Lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_IyrvICsmEeuRLMNIFDA5Lg" name="Class_Component" memberEnd="_IyrvISsmEeuRLMNIFDA5Lg _IysWMCsmEeuRLMNIFDA5Lg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IyrvISsmEeuRLMNIFDA5Lg" name="extension_Component" type="_IyVw4SsmEeuRLMNIFDA5Lg" aggregation="composite" association="_IyrvICsmEeuRLMNIFDA5Lg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_IysWMSsmEeuRLMNIFDA5Lg" name="Function">
+      <ownedAttribute xmi:id="_Iys9QismEeuRLMNIFDA5Lg" name="base_Class" association="_Iys9QCsmEeuRLMNIFDA5Lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Iys9QCsmEeuRLMNIFDA5Lg" name="Class_Function" memberEnd="_Iys9QSsmEeuRLMNIFDA5Lg _Iys9QismEeuRLMNIFDA5Lg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Iys9QSsmEeuRLMNIFDA5Lg" name="extension_Function" type="_IysWMSsmEeuRLMNIFDA5Lg" aggregation="composite" association="_Iys9QCsmEeuRLMNIFDA5Lg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Iys9QysmEeuRLMNIFDA5Lg" name="Performs">
+      <ownedAttribute xmi:id="_Iys9RismEeuRLMNIFDA5Lg" name="base_Dependency" association="_Iys9RCsmEeuRLMNIFDA5Lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Iys9RCsmEeuRLMNIFDA5Lg" name="Dependency_Performs" memberEnd="_Iys9RSsmEeuRLMNIFDA5Lg _Iys9RismEeuRLMNIFDA5Lg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Iys9RSsmEeuRLMNIFDA5Lg" name="extension_Performs" type="_Iys9QysmEeuRLMNIFDA5Lg" aggregation="composite" association="_Iys9RCsmEeuRLMNIFDA5Lg"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Profile>

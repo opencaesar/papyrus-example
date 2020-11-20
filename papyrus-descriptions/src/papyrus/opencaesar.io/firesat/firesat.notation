@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_GG78IBpzEeuZ-_R5nNZXFw" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_GG78IBpzEeuZ-_R5nNZXFw" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_HbPcoBpzEeuZ-_R5nNZXFw" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_HbjlsBpzEeuZ-_R5nNZXFw" type="Class_NameLabel"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_HbjlsRpzEeuZ-_R5nNZXFw" type="Class_FloatingNameLabel">
@@ -52,6 +52,30 @@
     <element xmi:type="uml:Class" href="firesat.uml#_JpeOwBpzEeuZ-_R5nNZXFw"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JphSERpzEeuZ-_R5nNZXFw" x="640" y="80"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_edi5FCsmEeuuWZd1dFxxUQ" type="StereotypeComment">
+    <styles xmi:type="notation:TitleStyle" xmi:id="_edi5FSsmEeuuWZd1dFxxUQ"/>
+    <styles xmi:type="notation:EObjectValueStyle" xmi:id="_edi5FysmEeuuWZd1dFxxUQ" name="BASE_ELEMENT">
+      <eObjectValue xmi:type="uml:Class" href="firesat.uml#_HbD2cBpzEeuZ-_R5nNZXFw"/>
+    </styles>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_edi5FismEeuuWZd1dFxxUQ" x="420" y="80"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_edjgJysmEeuuWZd1dFxxUQ" type="StereotypeComment">
+    <styles xmi:type="notation:TitleStyle" xmi:id="_edjgKCsmEeuuWZd1dFxxUQ"/>
+    <styles xmi:type="notation:EObjectValueStyle" xmi:id="_edjgKismEeuuWZd1dFxxUQ" name="BASE_ELEMENT">
+      <eObjectValue xmi:type="uml:Class" href="firesat.uml#_JpeOwBpzEeuZ-_R5nNZXFw"/>
+    </styles>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_edjgKSsmEeuuWZd1dFxxUQ" x="840" y="80"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_edkHMysmEeuuWZd1dFxxUQ" type="StereotypeComment">
+    <styles xmi:type="notation:TitleStyle" xmi:id="_edkHNCsmEeuuWZd1dFxxUQ"/>
+    <styles xmi:type="notation:EObjectValueStyle" xmi:id="_edkHNismEeuuWZd1dFxxUQ" name="BASE_ELEMENT">
+      <eObjectValue xmi:type="uml:Dependency" href="firesat.uml#_NfjvgBpzEeuZ-_R5nNZXFw"/>
+    </styles>
+    <element xsi:nil="true"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_edkHNSsmEeuuWZd1dFxxUQ" x="420" y="-20"/>
+  </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_GG78IRpzEeuZ-_R5nNZXFw" name="diagram_compatibility_version" stringValue="1.4.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_GG78IhpzEeuZ-_R5nNZXFw"/>
   <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_GG78IxpzEeuZ-_R5nNZXFw" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
@@ -63,12 +87,42 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_NfsSYRpzEeuZ-_R5nNZXFw" y="40"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_NfsSYhpzEeuZ-_R5nNZXFw" type="Dependency_StereotypeLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_NfsSYxpzEeuZ-_R5nNZXFw" y="60"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NfsSYxpzEeuZ-_R5nNZXFw" x="-14" y="-15"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_NfrrURpzEeuZ-_R5nNZXFw"/>
     <element xmi:type="uml:Dependency" href="firesat.uml#_NfjvgBpzEeuZ-_R5nNZXFw"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NfrrUhpzEeuZ-_R5nNZXFw" points="[320, 120, -643984, -643984]$[640, 120, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NgY18BpzEeuZ-_R5nNZXFw" id="(1.0,0.4)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NgY18RpzEeuZ-_R5nNZXFw" id="(0.0,0.4)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_edi5GCsmEeuuWZd1dFxxUQ" type="StereotypeCommentLink" source="_HbPcoBpzEeuZ-_R5nNZXFw" target="_edi5FCsmEeuuWZd1dFxxUQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_edi5GSsmEeuuWZd1dFxxUQ"/>
+    <styles xmi:type="notation:EObjectValueStyle" xmi:id="_edi5HSsmEeuuWZd1dFxxUQ" name="BASE_ELEMENT">
+      <eObjectValue xmi:type="uml:Class" href="firesat.uml#_HbD2cBpzEeuZ-_R5nNZXFw"/>
+    </styles>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_edi5GismEeuuWZd1dFxxUQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_edi5GysmEeuuWZd1dFxxUQ"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_edi5HCsmEeuuWZd1dFxxUQ"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_edjgKysmEeuuWZd1dFxxUQ" type="StereotypeCommentLink" source="_JphSEBpzEeuZ-_R5nNZXFw" target="_edjgJysmEeuuWZd1dFxxUQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_edjgLCsmEeuuWZd1dFxxUQ"/>
+    <styles xmi:type="notation:EObjectValueStyle" xmi:id="_edjgMCsmEeuuWZd1dFxxUQ" name="BASE_ELEMENT">
+      <eObjectValue xmi:type="uml:Class" href="firesat.uml#_JpeOwBpzEeuZ-_R5nNZXFw"/>
+    </styles>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_edjgLSsmEeuuWZd1dFxxUQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_edjgLismEeuuWZd1dFxxUQ"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_edjgLysmEeuuWZd1dFxxUQ"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_edkHNysmEeuuWZd1dFxxUQ" type="StereotypeCommentLink" source="_NfrrUBpzEeuZ-_R5nNZXFw" target="_edkHMysmEeuuWZd1dFxxUQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_edkHOCsmEeuuWZd1dFxxUQ"/>
+    <styles xmi:type="notation:EObjectValueStyle" xmi:id="_edkHPCsmEeuuWZd1dFxxUQ" name="BASE_ELEMENT">
+      <eObjectValue xmi:type="uml:Dependency" href="firesat.uml#_NfjvgBpzEeuZ-_R5nNZXFw"/>
+    </styles>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_edkHOSsmEeuuWZd1dFxxUQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_edkHOismEeuuWZd1dFxxUQ"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_edkHOysmEeuuWZd1dFxxUQ"/>
   </edges>
 </notation:Diagram>
