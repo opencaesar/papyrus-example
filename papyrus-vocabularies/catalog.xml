@@ -1,6 +1,7 @@
 <?xml version='1.0'?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
-	<rewriteURI uriStartString="http://imce.jpl.nasa.gov/discipline/" rewritePrefix="src/oml/imce.jpl.nasa.gov/discipline/"/>
+	<rewriteURI uriStartString="http://imce.jpl.nasa.gov/discipline/fse/profile/" rewritePrefix="src/oml/imce.jpl.nasa.gov/discipline/fse/profile/"/>
+	<rewriteURI uriStartString="http://imce.jpl.nasa.gov/foundation/profile/" rewritePrefix="src/oml/imce.jpl.nasa.gov/foundation/profile/"/>
 	<rewriteURI uriStartString="http://imce.jpl.nasa.gov/profile/" rewritePrefix="src/oml/imce.jpl.nasa.gov/profile/"/>
 	<rewriteURI uriStartString="http://" rewritePrefix="build/oml/" />
 </catalog>

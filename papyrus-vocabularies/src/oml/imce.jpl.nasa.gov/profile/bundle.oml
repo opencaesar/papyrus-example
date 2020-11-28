@@ -1,12 +1,20 @@
 @dc:title "IMCE Profile Bundle"
 vocabulary bundle <http://imce.jpl.nasa.gov/profile/bundle> with # as imce {
 
-	// DSL
-	extends <http://imce.jpl.nasa.gov/discipline/fse/bundle>
-
 	// UML
 	extends <http://www.eclipse.org/uml2/5.0.0/UML-Bundle>
 
-	// Embeddings
-	includes <http://imce.jpl.nasa.gov/profile/mission-embedding>
+	// DSL
+	extends <http://imce.jpl.nasa.gov/discipline/fse/bundle>
+
+	// DSL Embedding in UML
+	includes <http://imce.jpl.nasa.gov/foundation/profile/analysis-embedding>
+	includes <http://imce.jpl.nasa.gov/foundation/profile/base-embedding>
+	includes <http://imce.jpl.nasa.gov/foundation/profile/mission-embedding>
+	includes <http://imce.jpl.nasa.gov/foundation/profile/project-embedding>
+	includes <http://imce.jpl.nasa.gov/discipline/fse/profile/fse-embedding>
+	includes <http://imce.jpl.nasa.gov/discipline/fse/profile/assemblies-embedding>
+	includes <http://imce.jpl.nasa.gov/discipline/fse/profile/functions-embedding>
+	includes <http://imce.jpl.nasa.gov/discipline/fse/profile/endcircuits-embedding>
+
 }

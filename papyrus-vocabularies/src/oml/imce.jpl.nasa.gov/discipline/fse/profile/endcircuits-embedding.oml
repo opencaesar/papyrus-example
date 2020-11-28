@@ -1,0 +1,17 @@
+@dc:title "FSE End Circuits Embedding"
+vocabulary <http://imce.jpl.nasa.gov/discipline/fse/profile/endcircuits-embedding> with # as fse-endcircuits-embedding {
+
+	extends <http://www.eclipse.org/uml2/5.0.0/UML-Annotations>
+
+	extends <http://imce.jpl.nasa.gov/discipline/fse/endcircuits>
+
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept fse-endcircuits:Power
+
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept fse-endcircuits:PowerIn
+
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept fse-endcircuits:PowerOut
+
+}

@@ -1,0 +1,11 @@
+@dc:title "FSE Assemblies Embedding"
+vocabulary <http://imce.jpl.nasa.gov/discipline/fse/profile/assemblies-embedding> with # as fse-assemblies-embedding {
+
+	extends <http://www.eclipse.org/uml2/5.0.0/UML-Annotations>
+
+	extends <http://imce.jpl.nasa.gov/discipline/fse/assemblies> 
+
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept fse-assemblies:BaseAssembly
+
+}
