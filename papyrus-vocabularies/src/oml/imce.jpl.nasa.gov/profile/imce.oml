@@ -1,5 +1,5 @@
 @dc:title "IMCE Profile Bundle"
-vocabulary bundle <http://imce.jpl.nasa.gov/profile/bundle> with # as imce {
+vocabulary bundle <http://imce.jpl.nasa.gov/profile/imce> with # as imce {
 
 	// UML
 	extends <http://www.eclipse.org/uml2/5.0.0/UML-Bundle>
@@ -16,5 +16,6 @@ vocabulary bundle <http://imce.jpl.nasa.gov/profile/bundle> with # as imce {
 	includes <http://imce.jpl.nasa.gov/discipline/fse/profile/assemblies-embedding>
 	includes <http://imce.jpl.nasa.gov/discipline/fse/profile/functions-embedding>
 	includes <http://imce.jpl.nasa.gov/discipline/fse/profile/endcircuits-embedding>
+	includes <http://iupac.org/profile/metrology-embedding>
 
 }

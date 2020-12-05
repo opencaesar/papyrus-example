@@ -1,0 +1,56 @@
+@dc:title "Metrology Embedding"
+vocabulary <http://iupac.org/profile/metrology-embedding> with # as metrology-embedding {
+
+	extends <http://www.eclipse.org/uml2/5.0.0/UML-Annotations>
+
+	extends <http://iupac.org/metrology>
+
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref aspect metrology:Reference
+	
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref aspect metrology:Magnitude
+	
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref aspect metrology:Prefix
+	
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept metrology:Quantity
+	
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept metrology:SystemOfUnitaryQuantities
+	
+	@uml-annotations:isStereotypeOf "uml:Class"
+	ref concept metrology:SystemOfMetrologicalUnits
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:IsQuantityOf
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:IsMagnitudeOf
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:SystemHasUnitaryQuantity
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:HasReference
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:NonCoherentDerivedMeasurementUnitOf
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:PrefixesMeasurementUnit
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:HasPrefix
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:SystemHasMetrologicalUnit
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:HasFactorForUnitaryQuantity
+
+	@uml-annotations:isStereotypeOf "uml:Dependency"
+	ref relation entity metrology:HasFactorForMeasurementUnit
+
+}
