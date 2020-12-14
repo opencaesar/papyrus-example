@@ -18,12 +18,6 @@ vocabulary <http://imce.jpl.nasa.gov/foundation/profile/mission-embedding> with 
 	ref concept mission:Function
 
 	@uml-annotations:isStereotypeOf "uml:Class"
-	ref concept mission:Interchange
-
-	@uml-annotations:isStereotypeOf "uml:Class"
-	ref concept mission:InterchangePoint
-			
-	@uml-annotations:isStereotypeOf "uml:Class"
 	ref concept mission:Interface
 
 	@uml-annotations:isStereotypeOf "uml:Class"
@@ -54,37 +48,16 @@ vocabulary <http://imce.jpl.nasa.gov/foundation/profile/mission-embedding> with 
 	ref relation entity mission:Deploys
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:Emits
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:HasParticipant
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity mission:Induces
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity mission:Influences
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:Ingests
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:InterchangesThrough
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity mission:Invokes
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:Involves
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:Involves1
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:Involves2
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:IsTraversedBy
+	ref relation entity mission:Traverses
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity mission:Joins
@@ -108,13 +81,7 @@ vocabulary <http://imce.jpl.nasa.gov/foundation/profile/mission-embedding> with 
 	ref relation entity mission:Pursues
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:Receives
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity mission:Refines
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity mission:Sends
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity mission:Specifies

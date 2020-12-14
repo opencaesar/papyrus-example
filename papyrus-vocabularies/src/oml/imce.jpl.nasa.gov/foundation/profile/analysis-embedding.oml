@@ -6,22 +6,10 @@ vocabulary <http://imce.jpl.nasa.gov/foundation/profile/analysis-embedding> with
 	extends <http://imce.jpl.nasa.gov/foundation/analysis>
 	
 	@uml-annotations:isStereotypeOf "uml:Class"
-	ref concept analysis:Analysis
-
-	@uml-annotations:isStereotypeOf "uml:Class"
 	ref concept analysis:Assumption
 
 	@uml-annotations:isStereotypeOf "uml:Class"
 	ref concept analysis:Characterization
-
-	@uml-annotations:isStereotypeOf "uml:Class"
-	ref concept analysis:Constraint
-
-	@uml-annotations:isStereotypeOf "uml:Class"
-	ref concept analysis:Criterion
-
-	@uml-annotations:isStereotypeOf "uml:Class"
-	ref concept analysis:DrivingRequirementsAnalysis
 
 	@uml-annotations:isStereotypeOf "uml:Class"
 	ref concept analysis:DrivingRequirementsExplanation
@@ -36,9 +24,6 @@ vocabulary <http://imce.jpl.nasa.gov/foundation/profile/analysis-embedding> with
 	ref concept analysis:GlossaryEntry
 
 	@uml-annotations:isStereotypeOf "uml:Class"
-	ref concept analysis:KeyRequirementsAnalysis
-
-	@uml-annotations:isStereotypeOf "uml:Class"
 	ref concept analysis:KeyRequirementsExplanation
 
 	@uml-annotations:isStereotypeOf "uml:Class"
@@ -49,9 +34,6 @@ vocabulary <http://imce.jpl.nasa.gov/foundation/profile/analysis-embedding> with
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity analysis:Characterizes
-
-	@uml-annotations:isStereotypeOf "uml:Dependency"
-	ref relation entity analysis:Constrains
 
 	@uml-annotations:isStereotypeOf "uml:Dependency"
 	ref relation entity analysis:Explains
