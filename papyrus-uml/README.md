@@ -1,15 +1,9 @@
-# Papyrus Descriptions
+# Papyrus UML
 
-This is an example converting a [Papyrus](https://www.eclipse.org/papyrus/) UML model applying a DSL profile to [OML](https://opencaesar.github.io/oml/) description bundle.
+This is an example converting the [FireSat UML model](https://github.com/opencaesar/papyrus-example/papyrus-uml) from Papyrus to OML.
 
 ## Build
-Converts the UML model to OML description bundle
+Converts the FireSat model to OML description bundle
 ```
 ./gradlew build
-```
-
-## Publish to Maven Local
-Publishes the OML ontologies to the local maven repo
-```
-./gradlew publishToMavenLocal
 ```
