@@ -5,13 +5,15 @@ This is an example to showcase the [OML](https://opencaesar.github.io/oml/) adap
 ## Clone
 ```
   git clone https://github.com/opencaesar/papyrus-example.git
-  cd eclipse-vocabularies
+  cd papyrus-example
 ```
 
-## [Papyrus Vocabularues](papyrus-vocabularies)
+## [Papyrus OML](papyrus-oml)
 
-This is an example converting an [OML](https://opencaesar.github.io/oml/) vocabulary bundle representing a DSL to a [Papyrus](https://www.eclipse.org/papyrus/) UML profile.
+This is an example converting the [IMCE vocabulary bundle](https://github.com/opencaesar/imce-vocabularies/) from OML to a Papyrus UML profile.
 
-## [Papyrus Descriptions](papyrus-descriptions)
+This is an example converting the [FireSat description bundle](https://github.com/opencaesar/firesat-example/) from OML to a Papyrus UML model.
 
-This is an example converting a [Papyrus](https://www.eclipse.org/papyrus/) UML model applying a DSL profile to [OML](https://opencaesar.github.io/oml/) description bundle.
+## [Papyrus UML](papyrus-uml)
+
+This is an example converting the [FireSat UML model](https://github.com/opencaesar/papyrus-example/papyrus-uml) from Papyrus to OML.
