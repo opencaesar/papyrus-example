@@ -3,7 +3,7 @@
  */
 description='The Paprysus example vocabularies project'
 group = 'io.opencaesar.ontologies'
-version = '0.3.0'
+version = '0.1.0'
 
 /* 
  * The Gradle task dependencies 
@@ -72,11 +72,11 @@ task downloadDependencies(type:io.opencaesar.oml.merge.OmlMergeTask) {
 /*
  * A task to convert the OML catalog to OWL catalog
  */
-task omlToOwl(type:io.opencaesar.oml2owl.Oml2OwlTask, dependsOn: downloadDependencies) {
+task generateOwl(type:io.opencaesar.oml2owl.Oml2OwlTask, dependsOn: downloadDependencies) {
 	// OML catalog
 	inputCatalogPath = file('catalog.xml')
-	// Root ontology IRI to convert
-	rootOntologyIri = 'http://imce.jpl.nasa.gov/profile/bundle'
+	// Root ontology IRI to reason on
+	rootOntologyIri = 'http://imce.jpl.nasa.gov/profile/imce'
 	// OWL catalog
 	outputCatalogPath = file('build/owl/catalog.xml')
 }
@@ -84,16 +84,16 @@ task omlToOwl(type:io.opencaesar.oml2owl.Oml2OwlTask, dependsOn: downloadDepende
 /*
  * A task to run the Openllet reasoner on the OWL catalog
  */
-task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, dependsOn: omlToOwl) {
+task runReasoner(type:io.opencaesar.owl.reason.OwlReasonTask, dependsOn: generateOwl) {
 	// OWL catalog
 	catalogPath = file('build/owl/catalog.xml')
 	// Input ontology IRI to reason on
-	inputOntologyIri = 'http://imce.jpl.nasa.gov/profile/bundle'
+	inputOntologyIri = 'http://imce.jpl.nasa.gov/profile/imce'
 	// Entailment statements to generate and the ontologies to persist them in
 	specs = [
-		'http://imce.jpl.nasa.gov/profile/bundle/classes = ALL_SUBCLASS',
-		'http://imce.jpl.nasa.gov/profile/bundle/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY',
-		'http://imce.jpl.nasa.gov/profile/bundle/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS'
+		'http://imce.jpl.nasa.gov/profile/imce/classes = ALL_SUBCLASS',
+		'http://imce.jpl.nasa.gov/profile/imce/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY',
+		'http://imce.jpl.nasa.gov/profile/imce/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS'
 	]
 	// Junit error report
 	reportPath = file('build/reports/reasoning.xml')
@@ -102,11 +102,9 @@ task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, dependsOn: omlToOwl)
 /*
  * A task to convert an OML vocabulary bundle to Papyrus profile
  */
-task omlToPapyrus(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, dependsOn: owlReason) {
-	// OML catalog
-	inputCatalogPath = file('catalog.xml')
-	// DSL Vocabulary Bundle
-	inputOntologyPath = 'http://imce.jpl.nasa.gov/profile/bundle'
+task generateProfile(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, dependsOn: downloadDependencies) {
+	// Vocabulary Bundle Path
+	inputOntologyPath = file('src/oml/imce.jpl.nasa.gov/profile/imce.oml')
 	// Profile folder
 	outputFolderPath = file('build/profile')
 }
@@ -115,7 +113,7 @@ task omlToPapyrus(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, dependsOn: owl
  * A task to build the project, which executes several tasks together
  */
 task build() {
-	dependsOn omlToPapyrus
+	dependsOn generateProfile
 }
 
 /*
