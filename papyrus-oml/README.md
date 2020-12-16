@@ -1,15 +1,11 @@
-# Papyrus Vocabularies
+# Papyrus OML
 
-This is an example converting an [OML](https://opencaesar.github.io/oml/) vocabulary bundle representing a DSL to a [Papyrus](https://www.eclipse.org/papyrus/) UML profile.
+This is an example converting the [IMCE vocabulary bundle](https://github.com/opencaesar/imce-vocabularies/) from OML to a Papyrus UML profile.
+
+This is an example converting the [FireSat description bundle](https://github.com/opencaesar/firesat-example/) from OML to a Papyrus UML model.
 
 ## Build
-Converts the OML vocabulary bundle a Papyrus UML profile
+Converts the IMCE vocabulary bundle to a Papyrus UML profile and FireSat description bundle to UML model
 ```
 ./gradlew build
-```
-
-## Publish to Maven Local
-Publishes the OML ontologies to a local maven repo
-```
-./gradlew publishToMavenLocal
 ```
