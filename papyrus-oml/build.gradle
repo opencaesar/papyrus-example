@@ -70,13 +70,36 @@ task downloadDependencies(type:io.opencaesar.oml.merge.OmlMergeTask) {
 }
 
 /*
+ * A task to convert an OML vocabulary bundle to Papyrus UML profile
+ */
+task generateProfile(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, dependsOn: downloadDependencies) {
+	// Vocabulary Bundle Path
+	inputOntologyPath = file('src/oml/imce.jpl.nasa.gov/profile/imce.oml')
+	// Profile folder
+	outputFolderPath = file('build/papyrus')
+}
+
+/*
+ * A task to convert an OML description bundle to Papyrus UML model
+ */
+task generateUserModel(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, dependsOn: downloadDependencies) {
+	mustRunAfter generateProfile
+	// Vocabulary Bundle Path
+	inputOntologyPath = file('src/oml/opencaesar.io/examples/firesat/firesat.oml')
+	// Profile Path
+	inputProfilePath = file('build/papyrus/imce.jpl.nasa.gov/profile/imce.profile.uml')
+	// Profile folder
+	outputFolderPath = file('build/papyrus')
+}
+
+/*
  * A task to convert the OML catalog to OWL catalog
  */
 task generateOwl(type:io.opencaesar.oml2owl.Oml2OwlTask, dependsOn: downloadDependencies) {
 	// OML catalog
 	inputCatalogPath = file('catalog.xml')
 	// Root ontology IRI to reason on
-	rootOntologyIri = 'http://imce.jpl.nasa.gov/profile/imce'
+	rootOntologyIri = 'http://opencaesar.io/examples/firesat/firesat'
 	// OWL catalog
 	outputCatalogPath = file('build/owl/catalog.xml')
 }
@@ -88,32 +111,25 @@ task runReasoner(type:io.opencaesar.owl.reason.OwlReasonTask, dependsOn: generat
 	// OWL catalog
 	catalogPath = file('build/owl/catalog.xml')
 	// Input ontology IRI to reason on
-	inputOntologyIri = 'http://imce.jpl.nasa.gov/profile/imce'
+	inputOntologyIri = 'http://opencaesar.io/examples/firesat/firesat'
 	// Entailment statements to generate and the ontologies to persist them in
 	specs = [
-		'http://imce.jpl.nasa.gov/profile/imce/classes = ALL_SUBCLASS',
-		'http://imce.jpl.nasa.gov/profile/imce/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY',
-		'http://imce.jpl.nasa.gov/profile/imce/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS'
+		'http://opencaesar.io/examples/firesat/firesat/classes = ALL_SUBCLASS',
+		'http://opencaesar.io/examples/firesat/firesat/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY',
+		'http://opencaesar.io/examples/firesat/firesat/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS'
 	]
 	// Junit error report
 	reportPath = file('build/reports/reasoning.xml')
 }
 
-/*
- * A task to convert an OML vocabulary bundle to Papyrus profile
- */
-task generateProfile(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, dependsOn: downloadDependencies) {
-	// Vocabulary Bundle Path
-	inputOntologyPath = file('src/oml/imce.jpl.nasa.gov/profile/imce.oml')
-	// Profile folder
-	outputFolderPath = file('build/profile')
-}
 
 /*
  * A task to build the project, which executes several tasks together
  */
 task build() {
+	dependsOn runReasoner
 	dependsOn generateProfile
+	dependsOn generateUserModel
 }
 
 /*
