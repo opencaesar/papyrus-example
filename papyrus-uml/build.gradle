@@ -56,7 +56,7 @@ repositories {
  * The OML dependencies
  */
 dependencies {
-	oml "io.opencaesar.ontologies:papyrus-vocabularies:$papyrusVersion"
+	oml "io.opencaesar.ontologies:papyrus-oml:$papyrusVersion"
 }
 
 /*
