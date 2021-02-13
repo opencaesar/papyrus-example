@@ -71,12 +71,12 @@ task downloadDependencies(type:io.opencaesar.oml.merge.OmlMergeTask) {
  * A task to convert a Papyrus UML model with a DSL profile applied to OML description bundle
  */
 task papyrusToOml(type:io.opencaesar.papyrus2oml.Papyrus2OmlTask, dependsOn: downloadDependencies) {
-	// Papyrus folder
-	inputFolderPath = file('src/papyrus')
-	// Papyrus root model
-	inputModelPath = file('src/papyrus/opencaesar.io/firesat/firesat.uml')
+	// Papyrus Input model
+	inputModelPath = file('src/papyrus/opencaesar.io/examples/firesat/firesat.uml')
 	// OML catalog
 	outputCatalogPath = file('catalog.xml')
+	// Ignored Prefixes
+	ignoredIriPrefixes = [ 'http://iso.org' ]
 }
 
 /*

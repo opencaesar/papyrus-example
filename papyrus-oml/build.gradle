@@ -42,6 +42,7 @@ ext {
  */
 configurations {
 	oml
+	internalOml { extendsFrom oml }
 }
 
 /*
@@ -57,15 +58,16 @@ repositories {
  * The OML dependencies
  */
 dependencies {
-	oml "io.opencaesar.ontologies:firesat-example:$firesatVersion"
 	oml "io.opencaesar.ontologies:eclipse-vocabularies:$eclipseVersion"
+	oml "io.opencaesar.ontologies:firesat-example:$firesatVersion:vocabularies@zip"
+	internalOml "io.opencaesar.ontologies:firesat-example:$firesatVersion"
 }
 
 /*
  * A task to extract and merge the OML dependencies
  */
 task downloadDependencies(type:io.opencaesar.oml.merge.OmlMergeTask) {
-    inputZipPaths = configurations.oml.files
+    inputZipPaths = configurations.internalOml.files
     outputCatalogFolder = file('build/oml')
 }
 
@@ -146,7 +148,8 @@ apply plugin: 'maven-publish'
 
 task omlZip(type: Zip) {
 	from file('src/oml')
-	include "**/*.oml"
+	exclude "opencaesar.io/**/*.oml"
+	includeEmptyDirs = false
 	destinationDirectory = file('build/libs')
 	archiveBaseName = project.name
 	archiveVersion = project.version
@@ -165,6 +168,10 @@ publishing {
                     dependency.appendNode('groupId', it.group)
                     dependency.appendNode('artifactId', it.name)
                     dependency.appendNode('version', it.version)
+                    it.artifacts.each { art ->
+                   		dependency.appendNode('classifier', art.classifier)
+                   		dependency.appendNode('type', art.extension)
+                    }
                 }
             }
         }
