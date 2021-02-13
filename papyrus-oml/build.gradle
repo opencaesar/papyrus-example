@@ -42,7 +42,6 @@ ext {
  */
 configurations {
 	oml
-	internalOml { extendsFrom oml }
 }
 
 /*
@@ -60,14 +59,13 @@ repositories {
 dependencies {
 	oml "io.opencaesar.ontologies:eclipse-vocabularies:$eclipseVersion"
 	oml "io.opencaesar.ontologies:firesat-example:$firesatVersion:vocabularies@zip"
-	internalOml "io.opencaesar.ontologies:firesat-example:$firesatVersion"
 }
 
 /*
  * A task to extract and merge the OML dependencies
  */
 task downloadDependencies(type:io.opencaesar.oml.merge.OmlMergeTask) {
-    inputZipPaths = configurations.internalOml.files
+    inputZipPaths = configurations.oml.files
     outputCatalogFolder = file('build/oml')
 }
 
