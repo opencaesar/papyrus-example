@@ -30,10 +30,12 @@ buildscript {
 }
 
 /*
- * Dependency versions
+ * The repositories to look up OML dependencies in
  */
-ext { 
-	papyrusVersion = '0.+'
+repositories {
+	mavenLocal()
+	maven { url 'https://dl.bintray.com/opencaesar/ontologies' }
+	jcenter()
 }
 
 /*
@@ -44,12 +46,10 @@ configurations {
 }
 
 /*
- * The repositories to look up OML dependencies in
+ * Dependency versions
  */
-repositories {
-	mavenLocal()
-	maven { url 'https://dl.bintray.com/opencaesar/ontologies' }
-	jcenter()
+ext { 
+	papyrusVersion = '0.+'
 }
 
 /*
@@ -75,7 +75,7 @@ task papyrusToOml(type:io.opencaesar.papyrus2oml.Papyrus2OmlTask, dependsOn: dow
 	inputModelPath = file('src/papyrus/opencaesar.io/examples/firesat/firesat.uml')
 	// OML catalog
 	outputCatalogPath = file('catalog.xml')
-	// Ignored Prefixes
+	// Ignored IRI prefixes
 	ignoredIriPrefixes = [ 'http://iso.org' ]
 }
 

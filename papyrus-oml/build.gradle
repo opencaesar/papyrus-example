@@ -3,7 +3,7 @@
  */
 description='The Paprysus example vocabularies project'
 group = 'io.opencaesar.ontologies'
-version = '0.1.0'
+version = '0.2.0'
 
 /* 
  * The Gradle task dependencies 
@@ -30,21 +30,6 @@ buildscript {
 }
 
 /*
- * Dependency versions
- */
-ext { 
-	firesatVersion = '2.+'
-	eclipseVersion = '0.+'
-}
-
-/*
- * The configuration of OML dependencies
- */
-configurations {
-	oml
-}
-
-/*
  * The repositories to look up OML dependencies in
  */
 repositories {
@@ -54,18 +39,35 @@ repositories {
 }
 
 /*
+ * The configuration of OML dependencies
+ */
+configurations {
+	vocab
+	descr { extendsFrom vocab }
+}
+
+/*
+ * Dependency versions
+ */
+ext { 
+	firesatVersion = '2.+'
+	eclipseVersion = '0.+'
+}
+
+/*
  * The OML dependencies
  */
 dependencies {
-	oml "io.opencaesar.ontologies:eclipse-vocabularies:$eclipseVersion"
-	oml "io.opencaesar.ontologies:firesat-example:$firesatVersion:vocabularies@zip"
+	vocab "io.opencaesar.ontologies:eclipse-vocabularies:$eclipseVersion"
+	vocab "io.opencaesar.ontologies:firesat-example:$firesatVersion:vocabularies@zip"
+	descr "io.opencaesar.ontologies:firesat-example:$firesatVersion"
 }
 
 /*
  * A task to extract and merge the OML dependencies
  */
 task downloadDependencies(type:io.opencaesar.oml.merge.OmlMergeTask) {
-    inputZipPaths = configurations.oml.files
+    inputZipPaths = configurations.descr.files
     outputCatalogFolder = file('build/oml')
 }
 
@@ -144,8 +146,9 @@ task clean(type: Delete) {
  */
 apply plugin: 'maven-publish'
 
-task omlZip(type: Zip) {
+task vocabZip(type: Zip) {
 	from file('src/oml')
+	include "**/*.oml"
 	exclude "opencaesar.io/**/*.oml"
 	includeEmptyDirs = false
 	destinationDirectory = file('build/libs')
@@ -153,15 +156,15 @@ task omlZip(type: Zip) {
 	archiveVersion = project.version
 }
 
-publishToMavenLocal.dependsOn omlZip
+publishToMavenLocal.dependsOn vocabZip
 
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact omlZip
+            artifact vocabZip
 			pom.withXml {
                 def dependencies = asNode().appendNode('dependencies')
-                configurations.oml.allDependencies.stream().each {
+                configurations.vocab.allDependencies.stream().each {
                     def dependency = dependencies.appendNode('dependency')
                     dependency.appendNode('groupId', it.group)
                     dependency.appendNode('artifactId', it.name)
