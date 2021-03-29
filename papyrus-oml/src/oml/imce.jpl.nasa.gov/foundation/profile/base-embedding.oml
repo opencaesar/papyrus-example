@@ -8,10 +8,10 @@ vocabulary <http://imce.jpl.nasa.gov/foundation/profile/base-embedding> with # a
 	@uml-annotations:isStereotypeOf "uml:Class"
 	ref concept base:Package
 
-	@uml-annotations:isStereotypeOf "uml:Dependency"
+	@uml-annotations:isStereotypeOf "uml:Association"
 	ref relation entity base:Aggregates
 
-	@uml-annotations:isStereotypeOf "uml:Dependency"
+	@uml-annotations:isStereotypeOf "uml:Association"
 	ref relation entity base:Contains
 
 }
