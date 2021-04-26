@@ -1,0 +1,12 @@
+@dc:title "Payload Masses"
+description <http://opencaesar.io/model/programs/earth-science/projects/firesat/systems/pld/masses> with # as pld-masses {
+
+	extends <http://opencaesar.io/model/programs/earth-science/projects/firesat/systems/pld/pld>
+
+	// Payload Mass
+	@rdfs:label "Payload Mass Limit Constraint"
+	ci PayloadMassLimitConstraint : fse:MassLimitConstraint [
+		metrology:hasDoubleNumber "28.1"^^xsd:double
+		metrology:hasReference 80000-4-instances:kilogram
+	]
+}

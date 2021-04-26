@@ -1,0 +1,377 @@
+@dc:title "FSE Embedding"
+vocabulary <http://imce.jpl.nasa.gov/profile/imce-embedding> with # as imce-embedding {
+
+	extends <http://www.eclipse.org/uml2/5.0.0/UML-Annotations>
+
+	extends <http://imce.jpl.nasa.gov/discipline/fse/fse>
+
+    // Embedding of the metrology vocabulary
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref aspect metrology:Reference
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref aspect metrology:Magnitude
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref aspect metrology:Prefix
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept metrology:Quantity
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept metrology:SystemOfUnitaryQuantities
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept metrology:SystemOfMetrologicalUnits
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:IsQuantityOf
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:IsMagnitudeOf
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:SystemHasUnitaryQuantity
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:HasReference
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:NonCoherentDerivedMeasurementUnitOf
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:PrefixesMeasurementUnit
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:HasPrefix
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:SystemHasMetrologicalUnit
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:HasFactorForUnitaryQuantity
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity metrology:HasFactorForMeasurementUnit
+
+    // Embedding of the base vocabulary
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept base:Package
+
+    @uml-annotations:isStereotypeOf "uml:Association"
+    ref relation entity base:Aggregates
+
+    @uml-annotations:isStereotypeOf "uml:Association"
+    ref relation entity base:Contains
+ 
+    // Embedding of the mission vocabulary
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Component
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Environment
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Flow
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Function
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Interface
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Item
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Junction
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:MaterialItem
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Message
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Mission
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Objective
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Product
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept mission:Requirement
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Deploys
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Induces
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Influences
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Invokes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Traverses
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Joins
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Joins1
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Joins2
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Performs
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Presents
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Produces
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Pursues
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Refines
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Specifies
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:Transfers
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:TransfersIn
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity mission:TransfersOut
+
+    // Embedding of the analysis vocabulary
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:Assumption
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:Characterization
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:DrivingRequirementsExplanation
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:Explanation
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:Fact
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:GlossaryEntry
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:KeyRequirementsExplanation
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept analysis:TradeStudy
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity analysis:Analyzes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity analysis:Characterizes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity analysis:Explains
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity analysis:Limits
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity analysis:Validates
+
+    // Embedding of the project vocabulary
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Authority
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Concern
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Deliverable
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:DevelopmentState
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Facility
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Interchange
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:InterchangePoint
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Organization
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Person
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Policy
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Process
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Product
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Program
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Project
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Role
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:Stakeholder
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept project:WorkPackage
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Approves
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Authorizes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:BelongsTo
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Binds
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Concurs
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:DelegatesTo
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Delivers
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Describes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Executes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:HasAssignment
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:HasParticipant
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:HasResponsibilityFor
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:HasRole
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:InterchangesThrough
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Invokes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Involves
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Involves1
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Involves2
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Manifests
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Prepares
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Produces
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Realizes
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Receives
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:ReliesOn
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Represents
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity project:Supplies
+
+    // Embedding of the fse vocabulary
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:Subsystem
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:Assembly
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:EndCircuit
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:PowerEndCircuit
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:PowerIn
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:PowerOut
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:Function
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:PowerFunction
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:MassConstraint
+
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:MassAllocationConstraint
+    
+    @uml-annotations:isStereotypeOf "uml:Class"
+    ref concept fse:MassLimitConstraint
+    
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity fse:ConnectsAssembly
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity fse:ConnectsAssembly1
+
+    @uml-annotations:isStereotypeOf "uml:Dependency"
+    ref relation entity fse:ConnectsAssembly2
+
+}

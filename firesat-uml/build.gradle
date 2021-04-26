@@ -1,0 +1,196 @@
+/* 
+ * Dataset maven coordinates
+ */
+ext.title = "Firesat UML Model"
+description='The FireSat UML model project'
+
+apply from: "${rootDir}/gradle/maven-deployment.gradle"
+
+// Dataset-specific variables
+ext.dataset = [
+    // Name of dataset (matches one used in .fuseki.ttl file)
+    name: project.name,
+    // Root ontology Path of the dataset
+    rootOntologyPath: 'build/oml/opencaesar.io/model/firesat.oml',
+    // Root ontology IRI of the dataset
+    rootOntologyIri: 'http://opencaesar.io/model/firesat',
+    // URL for publishing dataset documentation
+    publishUrl: 'https://opencaesar.github.io/papyrus-example/firesat-uml'
+]
+
+/*
+ * The OML dependencies
+ */
+dependencies {
+    oml project(":imce-profile")
+    papyrus project(path: ":firesat-model", configuration: "papyrusZips")
+}
+
+/*
+ * A task to extract and merge the OML dependencies
+ */
+task omlDependencies(type:io.opencaesar.oml.merge.OmlMergeTask, group:"oml", dependsOn: configurations.oml) {
+    inputZipPaths = configurations.oml.files
+    outputCatalogFolder = file('build/oml')
+}
+
+/*
+ * A task to extract and merge the Papyrus dependencies
+ */
+task papyrusDependencies(type:Copy, group:"oml", dependsOn: configurations.papyrus) {
+    from configurations.papyrus.collect { zipTree(it) }
+    into 'build/papyrus'
+}
+
+/*
+ * A task to convert a Papyrus UML model with a DSL profile applied to OML description bundle
+ */
+task generateOmlDescriptions(type:io.opencaesar.papyrus2oml.Papyrus2OmlTask, dependsOn: [omlDependencies, papyrusDependencies]) {
+    // Papyrus Input model
+    inputModelPath = file('build/papyrus/opencaesar.io/model/firesat.uml')
+    // OML catalog
+    outputCatalogPath = file('catalog.xml')
+    // Ignored IRI prefixes
+    ignoredIriPrefixes = [ 'http://iso.org' ]
+    // conversion type
+    conversionType = 'uml'
+}
+
+/*
+ * A task to generate Bikeshed specification for the OML catalog
+ */
+task omlToBikeshed(type: io.opencaesar.oml.bikeshed.Oml2BikeshedTask, group:"oml", dependsOn: omlDependencies) {
+    // OML catalog
+    inputCatalogPath = file('catalog.xml')
+    // OWL folder
+    outputFolderPath = file('build/bikeshed')
+    // Input Ontology Iri
+    rootOntologyIri = "$dataset.rootOntologyIri".toString()
+    // Publish URL
+    publishUrl = "$dataset.publishUrl".toString()
+}
+
+/*
+ * A task to generate the model documentation in HTML
+ */
+import org.gradle.internal.os.OperatingSystem
+task generateDocs(dependsOn: omlToBikeshed, group:"oml") {
+    doLast {
+        if (OperatingSystem.current().isWindows()) {
+            exec { 
+                if (project.hasProperty('BIKESHED')) {
+                    environment 'PATH', "${environment.PATH}:${BIKESHED}"
+                }
+                commandLine 'build/bikeshed/publish.bat' 
+            }
+        } else {
+            exec { 
+                commandLine 'chmod', '+x', 'build/bikeshed/publish.sh' 
+            }
+            exec {
+                if (project.hasProperty('BIKESHED')) {
+                    environment 'PATH', "${environment.PATH}:${BIKESHED}"
+                }
+                commandLine 'build/bikeshed/publish.sh'
+            }
+        }
+    }
+}
+
+/*
+ * A task to convert the OML catalog to OWL catalog
+ */
+task omlToOwl(type:io.opencaesar.oml2owl.Oml2OwlTask, group:"oml", dependsOn: generateOmlDescriptions) {
+    // OML catalog
+    inputCatalogPath = file('catalog.xml')
+    // OWL catalog
+    outputCatalogPath = file('build/owl/catalog.xml')
+}
+
+/*
+ * A task to run the Openllet reasoner on the OWL catalog
+ */
+task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", dependsOn: omlToOwl) {
+    // OWL catalog
+    catalogPath = file('build/owl/catalog.xml')
+    // Input ontology IRI to reason on
+    inputOntologyIri = "$dataset.rootOntologyIri".toString()
+    // Entailment statements to generate and the ontologies to persist them in
+    specs = [
+        "$dataset.rootOntologyIri/classes = ALL_SUBCLASS".toString(),
+        "$dataset.rootOntologyIri/properties = INVERSE_PROPERTY | ALL_SUBPROPERTY".toString(),
+        "$dataset.rootOntologyIri/individuals = ALL_INSTANCE | DATA_PROPERTY_VALUE | OBJECT_PROPERTY_VALUE | SAME_AS".toString()
+    ]
+    // Junit error report
+    reportPath = file('build/reports/reasoning.xml')
+}
+
+/*
+ * A task to load an OWL catalog to a Fuseki dataset endpoint
+ */
+task owlLoad(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: owlReason) {
+    catalogPath = file('build/owl/catalog.xml')
+    endpointURL = "http://localhost:3030/$dataset.name".toString()
+    fileExtensions = ['owl', 'ttl']
+    iris = [
+        "$dataset.rootOntologyIri/classes".toString(),
+        "$dataset.rootOntologyIri/properties".toString(),
+        "$dataset.rootOntologyIri/individuals".toString()
+    ]
+}
+
+/*
+ * A task to run a set of SPARQL queries on a Fuseki dataset endpoint
+ */
+task owlQuery(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad) {
+    endpointURL = "http://localhost:3030/$dataset.name".toString()
+    queryPath = file('src/sparql')
+    resultPath = file('build/frames')
+}
+
+/*
+ * Publish artifact to maven
+ */
+task omlZip(type: Zip, group:"oml", dependsOn: generateOmlDescriptions) {
+    from file('build/oml/opencaesar.io')
+    include "**/*.oml"
+    destinationDirectory = file('build/libs')
+    archiveBaseName = project.name
+    archiveVersion = project.version
+}
+
+artifacts.default omlZip
+
+publishing.publications.maven.artifact omlZip
+
+/*
+ * A task to delete the build artifacts
+ */
+tasks.named('clean') {
+    group "oml"
+}
+
+/*
+ * A task to check the artifact
+ */
+tasks.named('check') {
+    group "oml"
+    dependsOn owlReason
+}
+
+/*
+ * A task to assemble the artifact
+ */
+tasks.named('assemble') {
+    group "oml"
+    dependsOn omlZip
+}
+
+/*
+ * Integration with the Eclipse IDE
+ */ 
+apply plugin: 'eclipse'
+
+eclipse {
+    synchronizationTasks omlDependencies
+}

@@ -1,0 +1,13 @@
+@dc:title "Thermal Control"
+description <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/systems/spc/subsystems/thc/thc> with # as thc {
+
+	uses <http://imce.jpl.nasa.gov/discipline/fse/fse>
+
+	// Thermal Control
+
+	@rdfs:label "Thermal Control"
+	ci ThermalControl : fse:Subsystem [
+		base:hasIdentifier "THC"
+	]
+
+}

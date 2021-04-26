@@ -1,17 +1,11 @@
 ---
 name: Question
-about: Ask a question
-title: "[QUESTION] -"
-labels: Question
+about: Ask us a question
+title: "[QUESTION]"
+labels: question
 assignees: ''
 
 ---
 
-## Description
-A brief description of your question.
-
-## Additional Context
-Description providing additional details and context.
-
-## Relevant screenshots
-If applicable, add screenshots to help illustrate the issue.
+**Question**
+Ask your question here

@@ -1,0 +1,6 @@
+@dc:title "FSE Vocabulary Bundle"
+vocabulary bundle <http://imce.jpl.nasa.gov/discipline/fse/bundle> with # as fse-bundle {
+		
+	extends <http://imce.jpl.nasa.gov/foundation/bundle>
+	
+}

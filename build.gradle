@@ -1,0 +1,61 @@
+/* 
+ * The Gradle task dependencies 
+ */
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.opencaesar.owl:owl-fuseki-gradle:+'
+        classpath 'io.opencaesar.owl:owl-query-gradle:+'
+        classpath 'io.opencaesar.owl:owl-load-gradle:+'
+        classpath 'io.opencaesar.owl:owl-reason-gradle:+'
+        classpath 'io.opencaesar.adapters:oml2papyrus-gradle:0.8.+'
+        classpath 'io.opencaesar.adapters:papyrus2oml-gradle:0.8.+'
+        classpath 'io.opencaesar.adapters:oml2owl-gradle:0.8.+'
+        classpath 'io.opencaesar.oml:oml-bikeshed-gradle:0.8.+'
+        classpath 'io.opencaesar.oml:oml-merge-gradle:0.8.+'
+    }
+}
+
+subprojects {
+    group = 'io.opencaesar.examples.papyrus'
+    version = '0.1.0'
+ 
+    apply plugin: 'base' 
+ 
+    /*
+     * The configuration of OML dependencies
+     */
+    configurations {
+        oml
+        it.'default'.extendsFrom oml
+        papyrus
+        papyrusZips
+    }
+
+    /*
+     * The repositories to look up OML dependencies in
+     */
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    
+}
+
+/*
+ * Start the headless Fuseki server
+ */
+task startFuseki(type: io.opencaesar.owl.fuseki.StartFusekiTask, group:"oml") {
+    configurationPath = file('.fuseki.ttl')
+    outputFolderPath = file('.fuseki')
+}
+
+/*
+ * Stop the headless Fuseki server
+ */
+task stopFuseki(type: io.opencaesar.owl.fuseki.StopFusekiTask, group:"oml") {
+    outputFolderPath = file('.fuseki')
+}

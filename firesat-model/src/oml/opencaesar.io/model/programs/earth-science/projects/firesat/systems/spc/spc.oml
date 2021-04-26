@@ -1,0 +1,17 @@
+@dc:title "Spacecraft"
+description <http://opencaesar.io/model/programs/earth-science/projects/firesat/systems/spc/spc> with # as spc {
+	
+	uses <http://imce.jpl.nasa.gov/discipline/fse/fse>
+
+	// Spacecraft System
+
+	@rdfs:label "Spacecraft System"
+	ci Spacecraft : fse:Subsystem [
+		base:hasIdentifier "SPC"
+	]
+
+	@rdfs:label "Lander System"
+	ci Lander : fse:Subsystem [
+		base:hasIdentifier "LDR"
+	]
+} 

@@ -1,0 +1,258 @@
+@dc:title "Command and Data Handling Masses"
+description <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/10/subsystems/cdh/masses> with # as cdh-masses {
+
+	extends <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/10/subsystems/cdh/assemblies>
+
+	// Propulsion Structure Post 1 Mass
+
+	@rdfs:label "Propulsion Structure Post 1 CBE Mass Constraint"
+	ci PropulsionStructurePost1MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PropulsionStructurePost1
+	]
+
+	// Propulsion Structure Post 2 Mass
+
+	@rdfs:label "Propulsion Structure Post 2 CBE Mass Constraint"
+	ci PropulsionStructurePost2MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PropulsionStructurePost2
+	]
+
+	// Propulsion Structure Post 3 Mass
+
+	@rdfs:label "Propulsion Structure Post 3 CBE Mass Constraint"
+	ci PropulsionStructurePost3MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PropulsionStructurePost3
+	]
+
+	// Propulsion Structure Post 4 Mass
+
+	@rdfs:label "Propulsion Structure Post 4 CBE Mass Constraint"
+	ci PropulsionStructurePost4MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PropulsionStructurePost4
+	]
+
+	// Structure Post 1 Mass
+
+	@rdfs:label "Structure Post 1 CBE Mass Constraint"
+	ci StructurePost1MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:StructurePost1
+	]
+
+	// Structure Post 2 Mass
+
+	@rdfs:label "Structure Post 2 CBE Mass Constraint"
+	ci StructurePost2MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:StructurePost2
+	]
+
+	// Structure Post 3 Mass
+
+	@rdfs:label "Structure Post 3 CBE Mass Constraint"
+	ci StructurePost3MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:StructurePost3
+	]
+
+	// Structure Post 4 Mass
+
+	@rdfs:label "Structure Post 4 CBE Mass Constraint"
+	ci StructurePost4MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:StructurePost4
+	]
+
+	// Structure Post 5 Mass
+
+	@rdfs:label "Structure Post 5 CBE Mass Constraint"
+	ci StructurePost5MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:StructurePost5
+	]
+
+	// Structure Post 6 Mass
+
+	@rdfs:label "Structure Post 6 CBE Mass Constraint"
+	ci StructurePost6MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:StructurePost6
+	]
+
+	// Side Panel 1 Mass
+
+	@rdfs:label "Side Panel 1 CBE Mass Constraint"
+	ci SidePanel1MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.8"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:SidePanel1
+	]
+
+	// Side Panel 2 Mass
+
+	@rdfs:label "Side Panel 2 CBE Mass Constraint"
+	ci SidePanel2MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.8"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:SidePanel2
+	]
+
+	// Side Panel 3 Mass
+
+	@rdfs:label "Side Panel 3 CBE Mass Constraint"
+	ci SidePanel3MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.8"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:SidePanel3
+	]
+
+	// Side Panel 4 Mass
+
+	@rdfs:label "Side Panel 4 CBE Mass Constraint"
+	ci SidePanel4MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.8"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:SidePanel4
+	]
+
+	// Side Panel 5 Mass
+
+	@rdfs:label "Side Panel 5 CBE Mass Constraint"
+	ci SidePanel5MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.8"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:SidePanel5
+	]
+
+	// Side Panel 6 Mass
+
+	@rdfs:label "Side Panel 6 CBE Mass Constraint"
+	ci SidePanel6MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.8"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:SidePanel6
+	]
+
+	// Base Plate Module Mass
+
+	@rdfs:label "Base Plate Module CBE Mass Constraint"
+	ci BasePlateModuleMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:BasePlateModule
+	]
+
+	// Base Plate Mass
+
+	@rdfs:label "Base Plate CBE Mass Constraint"
+	ci BasePlateMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "1.32"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:BasePlate
+	]
+
+	// Avionics Stack Section Mass
+
+	@rdfs:label "Avionics Stack Section CBE Mass Constraint"
+	ci AvionicsStackSectionMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:AvionicsStackSection
+	]
+
+	// Primary Flight Computer Unit Mass
+
+	@rdfs:label "Primary Flight Computer Unit CBE Mass Constraint"
+	ci PrimaryFlightComputerUnitMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "2.35"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PrimaryFlightComputerUnit
+	]
+
+	// Launch Vehicle Interface Module Mass
+
+	@rdfs:label "Launch Vehicle Interface Module CBE Mass Constraint"
+	ci LaunchVehicleInterfaceModuleMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:LaunchVehicleInterfaceModule
+	]
+
+	// Launch Vehicle Adapter Mass
+
+	@rdfs:label "Launch Vehicle Adapter CBE Mass Constraint"
+	ci LaunchVehicleAdapterMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "5.0"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:LaunchVehicleAdapter
+	]
+
+	// Separation System Mass
+
+	@rdfs:label "Separation System CBE Mass Constraint"
+	ci SeparationSystemMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "3.0"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:SeparationSystem
+	]
+
+	// Propellant Tank Mounting Panel Mass
+
+	@rdfs:label "Propellant Tank Mounting Panel CBE Mass Constraint"
+	ci PropellantTankMountingPanelMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "2.7"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PropellantTankMountingPanel
+	]
+
+	// Pressurant Tank Mounting Panel Mass
+
+	@rdfs:label "Pressurant Tank Mounting Panel CBE Mass Constraint"
+	ci PressurantTankMountingPanelMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "2.7"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PressurantTankMountingPanel
+	]
+
+	// Payload Structural Interface Mass
+
+	@rdfs:label "Payload Structural Interface CBE Mass Constraint"
+	ci PayloadStructuralInterfaceMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "3.5"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:PayloadStructuralInterface
+	]
+
+	// Top Panel Module Mass
+
+	@rdfs:label "Top Panel Module CBE Mass Constraint"
+	ci TopPanelModuleMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:TopPanelModule
+	]
+
+	// Top Panel Mass
+
+	@rdfs:label "Top Panel CBE Mass Constraint"
+	ci TopPanelMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "2.7"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf cdh-assemblies:TopPanel
+	]
+	
+}

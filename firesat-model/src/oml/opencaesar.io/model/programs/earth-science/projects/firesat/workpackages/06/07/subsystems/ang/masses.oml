@@ -1,0 +1,123 @@
+@dc:title "ADCS and GNC Masses"
+description <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/07/subsystems/ang/masses> with # as ang-masses {
+
+	extends <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/07/subsystems/ang/assemblies>
+
+	// Magnetometer Mass
+
+	@rdfs:label "Magnetometer CBE Mass Constraint"
+	ci MagnetometerMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.85"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:Magnetometer
+	]
+
+	// GPS Antenna Mass
+
+	@rdfs:label "GPS Antenna CBE Mass Constraint"
+	ci GPSAntennaMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.25"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:GPSAntenna
+	]
+
+	// GPS Receiver Unit Mass
+
+	@rdfs:label "GPS Receiver Unit CBE Mass Constraint"
+	ci GPSReceiverUnitMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "1.0"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:GPSReceiverUnit
+	]
+
+	// ADCS Electronics Unit Mass
+
+	@rdfs:label "ADCS Electronics Unit CBE Mass Constraint"
+	ci ADCSElectronicsUnitMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "2.0"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:ADCSElectronicsUnit
+	]
+
+	// Sun Sensor Mass
+
+	@rdfs:label "Sun Sensor CBE Mass Constraint"
+	ci SunSensorMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.6"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:SunSensor
+	]
+
+	// Earth Sensor Mass
+
+	@rdfs:label "Earth Sensor CBE Mass Constraint"
+	ci EarthSensorMassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "2.75"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:EarthSensor
+	]
+
+	// Reaction Wheel 1 Mass
+
+	@rdfs:label "Reaction Wheel 1 CBE Mass Constraint"
+	ci ReactionWheel1MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.1975"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:ReactionWheel1
+	]
+
+	// Reaction Wheel 2 Mass
+
+	@rdfs:label "Reaction Wheel 2 CBE Mass Constraint"
+	ci ReactionWheel2MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.1975"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:ReactionWheel2
+	]
+
+	// Reaction Wheel 3 Mass
+
+	@rdfs:label "Reaction Wheel 3 CBE Mass Constraint"
+	ci ReactionWheel3MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.1975"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:ReactionWheel3
+	]
+
+	// Reaction Wheel 4 Mass
+
+	@rdfs:label "Reaction Wheel 4 CBE Mass Constraint"
+	ci ReactionWheel4MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.1975"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:ReactionWheel4
+	]
+
+	// Magnetorquer 1 Mass
+
+	@rdfs:label "Magnetorquer 1 CBE Mass Constraint"
+	ci Magnetorquer1MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.5"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:Magnetorquer1
+	]
+
+	// Magnetorquer 2 Mass
+
+	@rdfs:label "Magnetorquer 2 CBE Mass Constraint"
+	ci Magnetorquer2MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.5"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:Magnetorquer2
+	]
+
+	// Magnetorquer 3 Mass
+
+	@rdfs:label "Magnetorquer 3 CBE Mass Constraint"
+	ci Magnetorquer3MassAllocationConstraint : fse:MassAllocationConstraint [
+		metrology:hasDoubleNumber "0.5"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf ang-assemblies:Magnetorquer3
+	]
+
+}

@@ -1,6 +1,0 @@
-description bundle <http://opencaesar.io/examples/firesat/firesat> with # as firesat-with-profile {
-	
-	extends <http://opencaesar.io/examples/firesat/bundle>
-	
-	uses <http://imce.jpl.nasa.gov/profile/imce>
-}

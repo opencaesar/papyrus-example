@@ -1,6 +1,11 @@
 # Papyrus Example
 
-This is an example to showcase the [OML](https://opencaesar.github.io/oml/) adapter for the [Papyrus](https://www.eclipse.org/papyrus/) UML too. 
+[![Build Status](https://travis-ci.org/opencaesar/papyrus-example.svg?branch=master)](https://travis-ci.org/opencaesar/papyrus-example)
+[![Release](https://img.shields.io/github/v/tag/opencaesar/papyrus-example?label=release)](https://github.com/opencaesar/papyrus-example/releases/latest)
+[![Documentation](https://img.shields.io/badge/Documentation-HTML-orange)](https://opencaesar.github.io/papyrus-example/) 
+[![Gitpod](https://img.shields.io/badge/gitpod-open-blue?logo=gitpod)](https://gitpod.io/#https://github.com/opencaesar/papyrus-example) 
+
+This repository exemplifies the usage of the [Papyrus OML adapter](https://github.com/opencaesar/papyrus-adapter).
 
 ## Clone
 ```
@@ -8,12 +13,46 @@ This is an example to showcase the [OML](https://opencaesar.github.io/oml/) adap
   cd papyrus-example
 ```
 
-## [Papyrus OML](papyrus-oml)
+## Build
+Equivalent to owlReason task
+```
+./gradlew build
+```
+## Publish to Maven Local
+```
+./gradlew publishToMavenLocal
+```
 
-This is an example converting the [IMCE vocabulary bundle](https://github.com/opencaesar/imce-vocabularies/) from OML to a Papyrus UML profile.
+## Generate Docs
+You must first have Bikeshed (the app itself) installed from [here](https://tabatkins.github.io/bikeshed/#install-final)
+```
+./gradlew generateDocs
+```
+Note: if bikeshed is not in the PATH, you can add -pBIKESHED=path/to/bikeshed argument
 
-This is an example converting the [FireSat description bundle](https://github.com/opencaesar/firesat-example/) from OML to a Papyrus UML model.
+## Run OWL Reasoner
+```
+./gradlew owlReason
+```
 
-## [Papyrus UML](papyrus-uml)
+## Start Fuseki Server
+```
+./gradlew startFuseki
+```
 
-This is an example converting the [FireSat UML model](https://github.com/opencaesar/papyrus-example/papyrus-uml) from Papyrus to OML.
+## Stop Fuseki Server
+```
+./gradlew stopFuseki
+```
+
+## Load Dataset to Fuseki
+```
+./gradlew <dataset>:owlLoad
+```
+Pre-req: A Fuseki server with the <dataset> must be running at http://localhost:3030/<dataset> (see below)  
+
+## Run SPARQL Queries
+```
+./gradlew <dataset>:owlQuery
+```
+Pre-req: A Fuseki server with the <dataset> must be running at http://localhost:3030/<dataset> (see below) 

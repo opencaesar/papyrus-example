@@ -1,0 +1,9 @@
+@dc:title "NASA"
+description <http://opencaesar.io/model/organizations/nasa> with # as nasa {
+
+	uses <http://imce.jpl.nasa.gov/foundation/project>
+
+	@rdfs:label "NASA"
+	ci NASA : project:Organization
+
+}

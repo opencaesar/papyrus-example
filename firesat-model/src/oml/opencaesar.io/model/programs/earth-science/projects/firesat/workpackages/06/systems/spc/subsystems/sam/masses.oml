@@ -1,0 +1,15 @@
+@dc:title "Structures and Mechanisms Masses"
+description <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/systems/spc/subsystems/sam/masses> with # as sam-masses {
+
+	extends <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/systems/spc/subsystems/sam/sam>
+
+	// Structures and Mechanisms Mass
+
+	@rdfs:label "Structures and Mechanisms Mass Limit Constraint"
+	ci StructuresAndMechanismsMassLimitConstraint : fse:MassLimitConstraint [
+		metrology:hasDoubleNumber "5.0"^^xsd:double
+    metrology:hasReference 80000-4-instances:kilogram
+		metrology:isQuantityOf sam:StructuresAndMechanisms
+	]
+
+}

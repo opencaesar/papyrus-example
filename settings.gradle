@@ -1,0 +1,6 @@
+include 'imce-profile'
+include 'firesat-model'
+include 'firesat-imce'
+include 'firesat-uml'
+include 'firesat-uml-imce'
+include 'model1'

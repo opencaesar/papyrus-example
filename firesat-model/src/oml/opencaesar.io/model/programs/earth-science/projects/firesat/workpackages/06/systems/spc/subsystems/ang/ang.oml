@@ -1,0 +1,13 @@
+@dc:title "ADCS and GNC"
+description <http://opencaesar.io/model/programs/earth-science/projects/firesat/workpackages/06/systems/spc/subsystems/ang/ang> with # as ang {
+
+	uses <http://imce.jpl.nasa.gov/discipline/fse/fse>
+
+	// ADCS And GNC
+
+	@rdfs:label "ADCS and GNC"
+	ci ADCSAndGNC : fse:Subsystem [
+		base:hasIdentifier "ANG"
+	]
+
+}
