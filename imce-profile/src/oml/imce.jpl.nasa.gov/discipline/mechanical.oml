@@ -1,0 +1,19 @@
+vocabulary <http://imce.jpl.nasa.gov/discipline/mechanical> with # as mechanical {
+
+	extends <http://iso.org/80000-4-units>
+
+	extends <http://imce.jpl.nasa.gov/foundation/mission>
+
+	concept MechanicalComponent :> mission:Component, metrology:Object
+
+	concept MassMagnitude :> 80000-4-units:MassMagnitude
+
+	relation entity IsMassOf :> metrology:IsQuantityOf [
+		from 80000-4-quantities:mass
+		to MechanicalComponent
+		forward isMassOf
+		reverse hasMass
+		functional
+		inverse functional
+	]
+}

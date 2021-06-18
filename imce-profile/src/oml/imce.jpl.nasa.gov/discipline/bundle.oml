@@ -1,0 +1,9 @@
+@dc:title "Discipline Vocabulary Bundle"
+vocabulary bundle <http://imce.jpl.nasa.gov/discipline/bundle> with # as discipline-bundle {
+		
+	extends <http://imce.jpl.nasa.gov/foundation/bundle>
+	
+    includes <http://imce.jpl.nasa.gov/discipline/mechanical>
+    includes <http://imce.jpl.nasa.gov/discipline/operations>
+    
+}

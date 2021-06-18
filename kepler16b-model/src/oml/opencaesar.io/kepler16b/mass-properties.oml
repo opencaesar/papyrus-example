@@ -1,0 +1,126 @@
+@dc:title "Kepler 16-b Example Component Mass Quantities"
+@dc:creator "ModelWare"
+@dc:rights "Copyright 2021, by Modelware"
+description <http://opencaesar.io/kepler16b/mass-properties> with # as mass-properties {
+
+	extends <http://opencaesar.io/kepler16b/components>
+
+	uses <http://imce.jpl.nasa.gov/discipline/mechanical>
+
+	ref ci components:orbiter-launch-system : mechanical:MechanicalComponent
+
+	ci orbiter-launch-system.mass.quantity : 80000-4-quantities:mass [
+		metrology:isQuantityOf components:orbiter-launch-system
+	]
+
+	ci orbiter-launch-system.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "2000"^^xsd:double
+		metrology:isMagnitudeOf orbiter-launch-system.mass.quantity
+	]
+
+	// Note that mechanical:isMassOf effectively forces components:orbiter-spacecraft
+	// to be classified as a mechanical:MechanicalComponent even though no such assertion
+	// was made.
+	ci orbiter-spacecraft.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-spacecraft
+	]
+
+	ci lander-launch-system.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:lander-launch-system
+	]
+
+	ci lander-launch-system.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "3000"^^xsd:double
+		metrology:isMagnitudeOf lander-launch-system.mass.quantity
+	]
+
+	ci lander-spacecraft.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:lander-spacecraft
+	]
+
+	ci lander-spacecraft.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "1200"^^xsd:double
+		metrology:isMagnitudeOf lander-spacecraft.mass.quantity
+	]
+
+	ci orbiter-power-subsystem.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-power-subsystem
+	]
+
+	ci orbiter-power-subsystem.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "297"^^xsd:double
+		metrology:isMagnitudeOf orbiter-power-subsystem.mass.quantity
+	]
+
+	ci orbiter-harness.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-harness
+	]
+
+	ci orbiter-harness.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "138"^^xsd:double
+		metrology:isMagnitudeOf orbiter-harness.mass.quantity
+	]
+
+	ci orbiter-thermal-subsystem.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-thermal-subsystem
+	]
+
+	ci orbiter-thermal-subsystem.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "307"^^xsd:double
+		metrology:isMagnitudeOf orbiter-thermal-subsystem.mass.quantity
+	]
+
+	ci orbiter-command-and-data-handling-subsystem.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-command-and-data-handling-subsystem
+	]
+
+	ci orbiter-command-and-data-handling-subsystem.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "147"^^xsd:double
+		metrology:isMagnitudeOf orbiter-command-and-data-handling-subsystem.mass.quantity
+	]
+
+	ci orbiter-telecom-subsystem.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-telecom-subsystem
+	]
+
+	ci orbiter-telecom-subsystem.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "316"^^xsd:double
+		metrology:isMagnitudeOf orbiter-telecom-subsystem.mass.quantity
+	]
+
+	ci orbiter-guidance-navigation-control-subsystem.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-guidance-navigation-control-subsystem
+	]
+
+	ci orbiter-guidance-navigation-control-subsystem.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "156"^^xsd:double
+		metrology:isMagnitudeOf orbiter-guidance-navigation-control-subsystem.mass.quantity
+	]
+
+	ci orbiter-mechanical-subsystem.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-mechanical-subsystem
+	]
+
+	ci orbiter-mechanical-subsystem.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "325"^^xsd:double
+		metrology:isMagnitudeOf orbiter-mechanical-subsystem.mass.quantity
+	]
+
+	ci orbiter-spacraft-flight-software.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-spacraft-flight-software
+	]
+
+	ci orbiter-spacraft-flight-software.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "165"^^xsd:double
+		metrology:isMagnitudeOf orbiter-spacraft-flight-software.mass.quantity
+	]
+
+	ci orbiter-propulsion-subsystem.mass.quantity : 80000-4-quantities:mass [
+		mechanical:isMassOf components:orbiter-propulsion-subsystem
+	]
+
+	ci orbiter-propulsion-subsystem.mass.magnitude : mechanical:MassMagnitude [
+		metrology:hasDoubleNumber "6"^^xsd:double
+		metrology:isMagnitudeOf orbiter-propulsion-subsystem.mass.quantity
+	]
+}

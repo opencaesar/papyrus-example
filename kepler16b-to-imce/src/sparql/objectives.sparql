@@ -1,0 +1,12 @@
+PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
+PREFIX mission:     <http://imce.jpl.nasa.gov/foundation/mission#>
+
+SELECT DISTINCT ?o_id ?o_name
+
+WHERE {
+	?obj 
+      a mission:Objective ;
+      base:hasIdentifier ?o_id ;
+      base:hasCanonicalName ?o_name ;
+}
+ORDER BY ?o_id

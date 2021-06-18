@@ -1,0 +1,51 @@
+---
+title: 'Pattern 2: Missions'
+output:
+  html_document:
+    df_print: paged
+---
+
+# Missions and Objectives
+
+## Raw Query
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?m_id ?m_name ?o1_id ?o2_id
+
+WHERE {
+	?m a mission:Mission ;
+	  base:hasIdentifier ?m_id ;
+	  base:hasCanonicalName ?m_name;
+	  mission:pursues [
+ 
+        a mission:Objective ;
+        base:hasIdentifier ?o1_id ;
+
+        base:aggregates [
+          base:hasIdentifier ?o2_id ;
+        ]
+      ]
+}
+ORDER BY ?m_id ?o1_id ?o2_id"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
+
+## A Nested Table
+
+```{r}
+source("hux_with_rowspans.r")
+t1 <- rbind(
+   set_bold(hux(matrix(c("ID", "Mission", "Pursues", "Aggregates"), nrow=1))),
+   hux_with_rowspans(d1$results)
+)
+t1
+```
+

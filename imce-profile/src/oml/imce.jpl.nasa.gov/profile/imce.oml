@@ -1,13 +1,13 @@
 @dc:title "IMCE Profile Bundle"
 vocabulary bundle <http://imce.jpl.nasa.gov/profile/imce> with # as imce {
 
+    // IMCE
+    extends <http://imce.jpl.nasa.gov/discipline/bundle>
+
 	// UML
 	extends <http://www.eclipse.org/uml2/5.0.0/UML-Bundle>
 
-	// DSL
-	extends <http://imce.jpl.nasa.gov/discipline/fse/bundle>
-
-	// DSL Embedding as UML Profile
+	// IMCE Embedding in UML
 	includes <http://imce.jpl.nasa.gov/profile/imce-embedding>
 
 }

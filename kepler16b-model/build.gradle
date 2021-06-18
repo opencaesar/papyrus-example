@@ -1,8 +1,8 @@
 /* 
  * Dataset maven coordinates
  */
-ext.title = "IMCE Profile"
-description='The IMCE profile project'
+ext.title = "Kepler16b Model"
+description='The Kepler16b model project'
 
 apply from: "${rootDir}/gradle/maven-deployment.gradle"
 
@@ -11,46 +11,51 @@ ext.dataset = [
     // Name of dataset
     name: project.name,
     // Root ontology Path of the dataset
-    rootOntologyPath: 'src/oml/imce.jpl.nasa.gov/profile/imce.oml',
+    rootOntologyPath: 'src/oml/opencaesar.io/kepler16b/kepler16b.oml',
     // Root ontology IRI of the dataset
-    rootOntologyIri: 'http://imce.jpl.nasa.gov/profile/imce',
+    rootOntologyIri: 'http://opencaesar.io/kepler16b/kepler16b',
+    // IMCE profile path of the dataset
+    papyrusProfilePath: 'build/papyrus/imce.jpl.nasa.gov/profile/imce.profile.uml',
     // URL for publishing dataset documentation
-    publishUrl: 'https://opencaesar.github.io/papyrus-example/imce-profile'
+    publishUrl: 'https://opencaesar.github.io/papyrus-example/kepler16b-model'
 ]
-
-/*
- * Dependency versions
- */
-ext { 
-    imceVersion = '2.+'
-    uml2Version = '0.+'
-}
 
 /*
  * The OML dependencies
  */
 dependencies {
-    oml "io.opencaesar.ontologies:imce-vocabularies:$imceVersion"
-    oml "io.opencaesar.ontologies:eclipse-uml2:$uml2Version"
+    oml project(":imce-profile")
+    papyrus project(path: ":imce-profile", configuration: "papyrusZips")
 }
 
 /*
  * A task to extract and merge the OML dependencies
  */
-
 task omlDependencies(type:io.opencaesar.oml.merge.OmlMergeTask, group:"oml", dependsOn: configurations.oml) {
     inputZipPaths = configurations.oml.files
     outputCatalogFolder = file('build/oml')
 }
 
 /*
- * A task to convert an OML vocabulary bundle to Papyrus profile
+ * A task to extract and merge the Papyrus dependencies
  */
-task generateProfile(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, group:"oml", dependsOn: omlDependencies) {
-    // Vocabulary Bundle Path
-    inputOntologyPath = file("$dataset.rootOntologyPath".toString())
+task papyrusDependencies(type:Copy, group:"oml", dependsOn: configurations.papyrus) {
+    from configurations.papyrus.collect { zipTree(it) }
+    into 'build/papyrus'
+}
+
+/*
+ * A task to convert an OML description bundle to Papyrus UML model
+ */
+task generateUmlModel(type:io.opencaesar.oml2papyrus.Oml2PapyrusTask, dependsOn: [omlDependencies, papyrusDependencies]) {
+    // Description Bundle Path
+    inputOntologyPath = file("$dataset.rootOntologyPath")
+    // Profile Path
+    inputProfilePath = file("$dataset.papyrusProfilePath")
     // Profile folder
     outputFolderPath = file('build/papyrus')
+    // Reify all link
+    forceReifiedLinks = true
 }
 
 /*
@@ -146,12 +151,12 @@ task owlQuery(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn:
 }
 
 /*
- * Package maven artifact
+ * Publish artifact to maven
  */
 task omlZip(type: Zip, group:"oml") {
     from file('src/oml')
     include "**/*.oml"
-    destinationDir project.libsDir
+    destinationDirectory = file('build/libs')
     archiveBaseName = project.name
     archiveVersion = project.version
 }
@@ -163,7 +168,7 @@ publishing.publications.maven.artifact omlZip
 /*
  * Package profile artifact
  */
-task papyrusZip(type: Zip, group:"oml", dependsOn: generateProfile) {
+task papyrusZip(type: Zip, group:"oml", dependsOn: generateUmlModel) {
     from file('build/papyrus')
     include "**/*.uml"
     destinationDir project.libsDir

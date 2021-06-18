@@ -1,0 +1,47 @@
+---
+title: 'Pattern : Component Presents Interface'
+output:
+  html_document:
+    df_print: paged
+---
+
+# Mission Presents Interface
+
+## Raw Query
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?c_id ?c_name ?i_id ?i_name
+
+WHERE {
+  [] a mission:Component ;
+    base:hasIdentifier ?c_id ;
+    base:hasCanonicalName ?c_name ;
+    mission:presents [
+      a mission:Interface ;
+      base:hasIdentifier ?i_id ;
+      base:hasCanonicalName ?i_name ;
+    ]
+}
+ORDER BY ?c_id ?i_id
+"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
+
+## A Nicer Table
+
+```{r}
+source("hux_with_rowspans.r")
+t1 <- rbind(
+   set_bold(hux(matrix(c("C ID", "Component", "I ID", "Interface"), nrow=1))),
+   hux_with_rowspans(d1$results)
+)
+t1
+```

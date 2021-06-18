@@ -1,0 +1,7 @@
+PREFIX base:   <http://imce.jpl.nasa.gov/foundation/base#>
+
+SELECT ?x ?y
+
+WHERE {
+	?x base:contains ?y
+}

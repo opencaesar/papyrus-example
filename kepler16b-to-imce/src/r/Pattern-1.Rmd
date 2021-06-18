@@ -1,0 +1,106 @@
+---
+title: 'Pattern 1: Objective Aggregation'
+output:
+  html_document:
+    df_print: paged
+---
+
+# Objectives Only
+
+## Raw Query
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?o_id ?o_name
+
+WHERE {
+	?obj 
+      a mission:Objective ;
+      base:hasIdentifier ?o_id ;
+      base:hasCanonicalName ?o_name ;
+}
+ORDER BY ?o_id
+"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
+
+## A Nicer Table
+
+```{r}
+library(knitr)
+t1 <- knitr::kable(d1$results, col.names = c("ID", "Name"))
+t1
+```
+
+
+
+# Objective Aggregation
+
+## Raw Query
+
+```{r}
+queryString2 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?o1_id ?o1_name ?o2_id ?o2_name
+
+WHERE {
+	?o1
+      a mission:Objective ;
+      base:hasIdentifier ?o1_id ;
+      base:hasCanonicalName ?o1_name ;
+
+      base:aggregates [
+        base:hasIdentifier ?o2_id ;
+        base:hasCanonicalName ?o2_name
+      ]
+}
+ORDER BY ?o1_id ?o2_id
+"
+d2 <- SPARQL(url=endpointURL, query=queryString2)
+d2$results
+```
+
+## A Nicer Table
+
+```{r}
+t2 <- knitr::kable(d2$results, col.names = c("ID", "Name", "ID", "Name"))
+t2
+```
+
+## A Fancier Table Grouped By Aggregating Objective
+
+```{r}
+library(kableExtra)
+
+d3 <- d2$results
+
+# split aggregated objectives by aggregating
+
+parts <- split(d3[, c("o2_id", "o2_name")], paste(d3$o1_id, d3$o1_name))
+
+# pack rows
+
+rows <- do.call(rbind, parts)
+
+t3 <- knitr::kable(rows, col.names = c("ID", "Name"), row.names=FALSE) %>% pack_rows(
+  index=sapply(parts, nrow)
+)
+t3
+```
+## A Graphical Representation
+
+```{r}
+library(igraph, warn.conflicts=FALSE)
+
+g <- graph_from_edgelist(as.matrix(d3[, c("o1_id", "o2_id")]), directed=TRUE)
+plot(g, vertex.shape="none")
+```

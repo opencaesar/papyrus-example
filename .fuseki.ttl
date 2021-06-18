@@ -7,17 +7,45 @@
 
 [] rdf:type fuseki:Server .
 
-<#service> rdf:type fuseki:Service ;
-    rdfs:label          "IMCE" ;												        # Human readable label for dataset
-    fuseki:name         "imce" ;												        # Name of the dataset in the endpoint url
+<#service1> rdf:type fuseki:Service ;
+    rdfs:label          "IMCE Profile" ;									     	   	# Human readable label for dataset
+    fuseki:name         "imce-profile" ;												# Name of the dataset in the endpoint url
+    fuseki:serviceReadWriteGraphStore "data" ;											# SPARQL Graph store protocol (read and write)
+    fuseki:endpoint 	[ fuseki:operation fuseki:query ;	fuseki:name "sparql"  ] ;	# SPARQL query service
+    fuseki:dataset      <#dataset> .
+
+<#service2> rdf:type fuseki:Service ;
+    rdfs:label          "Kepler16b Model" ;										        # Human readable label for dataset
+    fuseki:name         "kepler16b-model" ;										        # Name of the dataset in the endpoint url
+    fuseki:serviceReadWriteGraphStore "data" ;											# SPARQL Graph store protocol (read and write)
+    fuseki:endpoint 	[ fuseki:operation fuseki:query ;	fuseki:name "sparql"  ] ;	# SPARQL query service
+    fuseki:dataset      <#dataset> .
+
+<#service3> rdf:type fuseki:Service ;
+    rdfs:label          "Kepler16b to IMCE" ;										    # Human readable label for dataset
+    fuseki:name         "kepler16b-to-imce" ;										    # Name of the dataset in the endpoint url
+    fuseki:serviceReadWriteGraphStore "data" ;											# SPARQL Graph store protocol (read and write)
+    fuseki:endpoint 	[ fuseki:operation fuseki:query ;	fuseki:name "sparql"  ] ;	# SPARQL query service
+    fuseki:dataset      <#dataset> .
+
+<#service4> rdf:type fuseki:Service ;
+    rdfs:label          "Kepler16b to UML" ;										    # Human readable label for dataset
+    fuseki:name         "kepler16b-to-uml" ;										    # Name of the dataset in the endpoint url
+    fuseki:serviceReadWriteGraphStore "data" ;											# SPARQL Graph store protocol (read and write)
+    fuseki:endpoint 	[ fuseki:operation fuseki:query ;	fuseki:name "sparql"  ] ;	# SPARQL query service
+    fuseki:dataset      <#dataset> .
+
+<#service5> rdf:type fuseki:Service ;
+    rdfs:label          "Kepler16b to UML-IMCE" ;										# Human readable label for dataset
+    fuseki:name         "kepler16b-to-uml-imce" ;										# Name of the dataset in the endpoint url
     fuseki:serviceReadWriteGraphStore "data" ;											# SPARQL Graph store protocol (read and write)
     fuseki:endpoint 	[ fuseki:operation fuseki:query ;	fuseki:name "sparql"  ] ;	# SPARQL query service
     fuseki:dataset      <#dataset> .
 
 ## In memory TDB with union graph.
 <#dataset> rdf:type   tdb:DatasetTDB ;
-  tdb:location "--mem--" ;
-  # Query timeout on this dataset (1s, 1000 milliseconds)
-  ja:context [ ja:cxtName "arq:queryTimeout" ; ja:cxtValue "1000" ] ;
-  # Make the default graph be the union of all named graphs.
-  tdb:unionDefaultGraph true .
+	tdb:location "--mem--" ;
+	# Query timeout on this dataset (1s, 1000 milliseconds)
+	ja:context [ ja:cxtName "arq:queryTimeout" ; ja:cxtValue "1000" ] ;
+	# Make the default graph be the union of all named graphs.
+	tdb:unionDefaultGraph true .

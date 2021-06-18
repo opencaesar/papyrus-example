@@ -1,0 +1,114 @@
+---
+title: 'Pattern 4-Metrology: Mass Rollup'
+output:
+  html_document:
+    df_print: paged
+---
+
+# Orbiter Spacecraft Mass
+
+## Component Decomposition Edge List
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?p_id ?c_id
+WHERE {
+  [] base:hasIdentifier ?p_id ;
+     base:contains [ base:hasIdentifier ?c_id ]
+}
+ORDER BY ?p_id ?c_id
+"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
+## Component Decomposition Tree
+
+### Graph Vertices
+
+```{r}
+library(igraph, warn.conflicts=FALSE)
+g <- graph_from_edgelist(as.matrix(d1$results[, c("p_id", "c_id")]), directed=TRUE)
+V(g)
+```
+
+### Graph Edges
+
+```{r}
+E(g)
+```
+
+### Graph Verification
+
+##### Connected
+
+```{r}
+components(g)$no == 1
+```
+
+#### Directed
+
+```{r}
+is_directed(g)
+```
+
+#### Acyclic
+
+```{r}
+girth(g)$girth == 0
+```
+
+#### Single-Rooted
+
+```{r}
+length(which(degree(g, mode="in") == 0)) == 1
+```
+
+## Leaf Component Masses
+
+```{r}
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString2 = '
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+PREFIX mechanical:  <http://opencaesar.io/tutorial/vocabulary/mechanical#>
+PREFIX metrology:   <http://iupac.org/metrology#>
+
+SELECT DISTINCT ?c_id ?mass
+WHERE {
+  [] base:hasCanonicalName "Orbiter Spacecraft" ;
+    base:contains* ?c .
+  ?c base:hasIdentifier ?c_id
+  optional {
+    [] a mechanical:MassMagnitude ;
+      metrology:hasDoubleNumber ?mass ;
+      metrology:isMagnitudeOf [
+        mechanical:isMassOf ?c 
+      ]
+  }
+}
+ORDER BY ?c_id
+'
+d2 <- SPARQL(url=endpointURL, query=queryString2)
+d2$results
+```
+
+## Mass Roll-up Using Depth-First Traversal
+
+```{r}
+df <- d2$results
+order <- dfs(g, V(g)["C.02"], order=FALSE, order.out=TRUE)$order.out
+for (v in order) {
+  children <- neighbors(g, v, mode="out")
+  if (length(children) > 0) {
+    mass <- sum(df[is.element(df$c_id, names(children)), "mass"])
+    df[df$c_id == names(V(g)[v]), "mass"] <- mass
+  }
+}
+df
+```

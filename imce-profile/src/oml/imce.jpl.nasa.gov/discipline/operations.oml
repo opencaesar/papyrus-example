@@ -1,0 +1,31 @@
+@dc:title "Operations Vocabulary Tutorial"
+@dc:creator "ModelWare"
+@dc:rights "Copyright 2021, by ModelWare"
+vocabulary <http://imce.jpl.nasa.gov/discipline/operations> with # as operations {
+
+	extends <http://imce.jpl.nasa.gov/foundation/mission>
+
+	concept CommandInterface :> mission:Interface
+
+	concept CommandOutInterface :> CommandInterface
+
+	concept CommandInInterface :> CommandInterface
+
+	concept TelemetryInterface :> mission:Interface
+
+	concept TelemetryOutInterface :> TelemetryInterface
+
+	concept TelemetryInInterface :> TelemetryInterface
+
+	concept CommandUplink :> mission:Junction [
+		restricts all relation mission:joins to CommandInterface
+		restricts all relation mission:joins1 to CommandOutInterface
+		restricts all relation mission:joins2 to CommandInInterface
+	]
+
+	concept TelemetryDownlink :> mission:Junction [
+		restricts all relation mission:joins to TelemetryInterface
+		restricts all relation mission:joins1 to TelemetryOutInterface
+		restricts all relation mission:joins2 to TelemetryInInterface
+	]
+}

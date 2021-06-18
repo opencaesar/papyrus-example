@@ -1,0 +1,67 @@
+---
+title: 'Pattern : Component Presents Interface'
+output:
+  html_document:
+    df_print: paged
+---
+<style type="text/css">
+  body{
+  font-size: 8pt;
+}
+</style>
+# Mission Presents Interface
+
+## Raw Query
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?j_id ?j_name ?i1_id ?i1_name ?i2_id ?i2_name
+
+WHERE {
+  [] a mission:Junction ;
+    base:hasIdentifier ?j_id ;
+    base:hasCanonicalName ?j_name ;
+    mission:joins1 [
+      base:hasIdentifier ?i1_id ;
+      base:hasCanonicalName ?i1_name ;
+    ] ;
+    mission:joins2 [
+      base:hasIdentifier ?i2_id ;
+      base:hasCanonicalName ?i2_name ;
+    ] ;
+}
+ORDER BY ?j_id ?i1_id ?i2_id
+"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
+
+## Displayed By Junction
+
+```{r}
+df <- d1$results
+colnames(df) <- c("J ID", "Junction", "I1 ID", "Interface 1", "I2 ID", "Interface 2")
+t1 <- df[order(df$`J ID`), ]
+t1
+```
+
+## Displayed By Interface 1
+
+```{r}
+options(width = 100)
+t2 <- df[order(df$`I1 ID`), c("I1 ID", "Interface 1", "J ID", "Junction", "I2 ID", "Interface 2") ]
+t2
+```
+
+## Displayed By Interface 2
+
+```{r}
+t3 <- df[order(df$`I2 ID`), c("I2 ID", "Interface 2", "J ID", "Junction", "I1 ID", "Interface 1") ]
+t3
+```

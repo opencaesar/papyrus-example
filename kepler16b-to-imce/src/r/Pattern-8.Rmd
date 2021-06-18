@@ -1,0 +1,45 @@
+---
+title: 'Pattern : Refinement'
+output:
+  html_document:
+    df_print: paged
+---
+<style type="text/css">
+  body{
+  font-size: 8pt;
+}
+</style>
+# Requirement refines Requirement
+
+## Raw Query
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?r1_id ?r2_id
+
+WHERE {
+  [] a mission:Requirement ;
+    base:hasIdentifier ?r1_id ;
+    mission:refines [
+      base:hasIdentifier ?r2_id ;
+    ]
+}
+ORDER BY ?r1_id ?r2_id
+"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
+
+## Graph Analysis
+
+```{r}
+library(igraph, warn.conflicts = FALSE)
+g <- graph_from_edgelist(as.matrix(d1$results), directed=TRUE)
+print(paste("refinement graph is", if(is_dag(g)) "a" else "not a", "directed acyclic graph", sep=" "))
+```

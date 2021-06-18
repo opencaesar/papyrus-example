@@ -1,0 +1,52 @@
+---
+title: 'Pattern : Requirements'
+output:
+  html_document:
+    df_print: paged
+---
+<style type="text/css">
+  body{
+  font-size: 8pt;
+}
+</style>
+# Requirements Specifies (Mission Presents Interface)
+
+## Raw Query
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?r_id ?c_id ?i_id
+
+WHERE {
+  [] a mission:Requirement ;
+    base:hasIdentifier ?r_id ;
+    mission:specifies [
+      a mission:Presents ;           # reified relation
+      mission:hasPresentsSource [    # source
+        base:hasIdentifier ?c_id
+      ] ;
+      mission:hasPresentsTarget [    # target
+        base:hasIdentifier ?i_id
+      ] ;
+    ]
+}
+ORDER BY ?r_id ?c_id ?i_id
+"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
+
+## Displayed By Component, Interface, Requirement
+
+```{r}
+df <- d1$results
+colnames(df) <- c("Requirement ID", "Component ID", "Interface ID")
+t1 <- df[order(df$`Component ID`, df$`Interface ID`, df$`Requirement ID`), c("Component ID", "Interface ID", "Requirement ID") ]
+t1
+```

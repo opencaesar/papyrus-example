@@ -1,0 +1,21 @@
+@dc:title "Description Bundle"
+@dc:creator "Example Company"
+@dc:rights "Copyright 2019, by Example Company"
+description bundle <http://opencaesar.io/kepler16b/kepler16b> with # as kepler16b {
+
+	uses <http://imce.jpl.nasa.gov/profile/imce>
+
+	includes <http://opencaesar.io/kepler16b/objectives>
+
+	includes <http://opencaesar.io/kepler16b/components>
+
+	includes <http://opencaesar.io/kepler16b/interfaces>
+
+	includes <http://opencaesar.io/kepler16b/junctions>
+
+	includes <http://opencaesar.io/kepler16b/requirements>
+
+	includes <http://opencaesar.io/kepler16b/missions>
+
+	includes <http://opencaesar.io/kepler16b/mass-properties>
+}

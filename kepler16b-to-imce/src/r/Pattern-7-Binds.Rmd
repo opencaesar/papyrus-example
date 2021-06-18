@@ -1,0 +1,38 @@
+---
+title: 'Pattern : Requirements'
+output:
+  html_document:
+    df_print: paged
+---
+<style type="text/css">
+  body{
+  font-size: 8pt;
+}
+</style>
+# Requirements Specifies (Mission Presents Interface)
+
+## Raw Query
+
+```{r}
+library(SPARQL, quietly=TRUE)
+
+endpointURL = "http://localhost:3030/oml-tutorial"
+queryString1 = "
+PREFIX base:        <http://opencaesar.io/tutorial/vocabulary/base#>
+PREFIX mission:     <http://opencaesar.io/tutorial/vocabulary/mission#>
+
+SELECT DISTINCT ?c_id ?c_name ?r_id
+
+WHERE {
+  [] a mission:Requirement ;
+    base:hasIdentifier ?r_id ;
+    mission:binds [
+      base:hasIdentifier ?c_id ;
+      base:hasCanonicalName ?c_name
+    ]
+}
+ORDER BY ?c_id ?r_id
+"
+d1 <- SPARQL(url=endpointURL, query=queryString1)
+d1$results
+```
