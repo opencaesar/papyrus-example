@@ -1,6 +1,6 @@
 # Papyrus Example
 
-[![Build Status](https://travis-ci.org/opencaesar/papyrus-example.svg?branch=master)](https://travis-ci.org/opencaesar/papyrus-example)
+[![Build Status](https://travis-ci.com/opencaesar/papyrus-example.svg?branch=master)](https://travis-ci.com/opencaesar/papyrus-example)
 [![Release](https://img.shields.io/github/v/tag/opencaesar/papyrus-example?label=release)](https://github.com/opencaesar/papyrus-example/releases/latest)
 [![Documentation](https://img.shields.io/badge/Documentation-HTML-orange)](https://opencaesar.github.io/papyrus-example/) 
 [![Gitpod](https://img.shields.io/badge/gitpod-open-blue?logo=gitpod)](https://gitpod.io/#https://github.com/opencaesar/papyrus-example) 
