@@ -20,7 +20,7 @@ buildscript {
 }
 
 subprojects {
-    group = 'io.opencaesar.examples.papyrus'
+    group = 'io.opencaesar.ontologies'
     version = '0.1.0'
  
     apply plugin: 'base' 
