@@ -1,0 +1,44 @@
+var data = { "head": {
+    "vars": [ "o1_id" , "o1_name" , "o2_id" , "o2_name" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "o1_id": { "type": "literal" , "value": "O.01" } ,
+        "o1_name": { "type": "literal" , "value": "Characterize the atmosphere of Kepler 16-b" } ,
+        "o2_id": { "type": "literal" , "value": "O.02" } ,
+        "o2_name": { "type": "literal" , "value": "Characterize the liquid ocean of Kepler 16-b" }
+      } ,
+      { 
+        "o1_id": { "type": "literal" , "value": "O.03" } ,
+        "o1_name": { "type": "literal" , "value": "Characterize the gravitational field of Kepler 16-b" } ,
+        "o2_id": { "type": "literal" , "value": "O.02" } ,
+        "o2_name": { "type": "literal" , "value": "Characterize the liquid ocean of Kepler 16-b" }
+      } ,
+      { 
+        "o1_id": { "type": "literal" , "value": "O.03" } ,
+        "o1_name": { "type": "literal" , "value": "Characterize the gravitational field of Kepler 16-b" } ,
+        "o2_id": { "type": "literal" , "value": "O.04" } ,
+        "o2_name": { "type": "literal" , "value": "Characterize the rocky core of Kepler 16-b" }
+      } ,
+      { 
+        "o1_id": { "type": "literal" , "value": "O.04" } ,
+        "o1_name": { "type": "literal" , "value": "Characterize the rocky core of Kepler 16-b" } ,
+        "o2_id": { "type": "literal" , "value": "O.05" } ,
+        "o2_name": { "type": "literal" , "value": "Characterize the core density of Kepler 16-b" }
+      } ,
+      { 
+        "o1_id": { "type": "literal" , "value": "O.04" } ,
+        "o1_name": { "type": "literal" , "value": "Characterize the rocky core of Kepler 16-b" } ,
+        "o2_id": { "type": "literal" , "value": "O.06" } ,
+        "o2_name": { "type": "literal" , "value": "Characterize the core shape of Kepler 16-b" }
+      } ,
+      { 
+        "o1_id": { "type": "literal" , "value": "O.07" } ,
+        "o1_name": { "type": "literal" , "value": "Characterize the energetic particule environment of the Kepler 16-b binary star system" } ,
+        "o2_id": { "type": "literal" , "value": "O.02" } ,
+        "o2_name": { "type": "literal" , "value": "Characterize the liquid ocean of Kepler 16-b" }
+      }
+    ]
+  }
+}
