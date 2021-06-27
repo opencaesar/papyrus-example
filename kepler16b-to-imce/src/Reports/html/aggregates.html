@@ -4,6 +4,8 @@
 <meta charset="ISO-8859-1">
 <title>Aggregates Pattern</title>
 <style>
+.node {}
+.link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
 .collapsible {
   background-color: #777;
   color: white;
@@ -25,6 +27,13 @@
   display: none;
   overflow: hidden;
   background-color: #f1f1f1;
+}
+
+.text {
+  text-anchor: middle;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  fill: #666;
+  font-size: 16px;
 }
 
 #table {
@@ -57,12 +66,19 @@
 </head>
 <body>
 <!-- load d3  -->
-<script src="../js/lib/d3.min.js"></script>
+<script src="../js/lib/d3-dispatch.js"></script>
+<script src="../js/lib/d3-selection.js"></script>
+<script src="../js/lib/d3-quadtree.js"></script>
+<script src="../js/lib/d3-timer.js"></script>
+<script src="../js/lib/d3-drag.js"></script>
+<script src="../js/lib/d3-force.js"></script>
+
 <!-- load the data -->
 <script type="text/javascript" src="../data/aggregates.json"></script>
 <!-- load the code -->
 <script src="../js/D3Table.js"></script>
 <script src="../js/D3TreeTable.js"></script>
+<script src="../js/D3Graph.js"></script>
 <div id='description'>
 <h1>Description of Aggregates pattern:</h1>
 <p>This is some text explaining it.</p>
@@ -74,6 +90,9 @@
 <h2>Showing it as a Tree</h2>
 <p>small description of the tree</p> 
 <div id='treeTableViz'></div>
+<h2>Showing it as a Graph</h2>
+<p>small description of the graph</p> 
+<div id='graphViz'></div>
 <script src="../js/aggregates.js"></script>
 </div>
 </body>

@@ -36,8 +36,8 @@ function transform(tableData){
 
 
 var treeData = transform(data.results.bindings);
-treeTable(treeData,"#treeTableViz")
-
+treeTable(treeData,"#treeTableViz");
+drawGraph(data,"#graphViz");
 
 
 
