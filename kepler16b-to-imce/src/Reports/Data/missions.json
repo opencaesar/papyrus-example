@@ -1,4 +1,4 @@
-data = { "head": {
+var data = { "head": {
     "vars": [ "m_id" , "m_name" , "o1_id" , "o2_id" ]
   } ,
   "results": {

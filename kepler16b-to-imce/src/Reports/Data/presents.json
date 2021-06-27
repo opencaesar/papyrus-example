@@ -1,4 +1,4 @@
-{ "head": {
+var data = { "head": {
     "vars": [ "c" , "i" ]
   } ,
   "results": {
