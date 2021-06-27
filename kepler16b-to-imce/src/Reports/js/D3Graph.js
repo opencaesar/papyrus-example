@@ -35,8 +35,9 @@ function toGraphData(data){
 }
 
 
-function drawGraph(data,containerID,width=960,height=600){
-	var graph = toGraphData(data)
+function drawGraph(data,containerID,transform = true,width=960,height=600){
+	var graph = data;
+	if (transform) graph = toGraphData(data)
 	var container = d3.select(containerID);
 	var svg = container.append('svg').attr("width",width).attr("height",height);
     // arrow def
@@ -95,20 +96,39 @@ function drawGraph(data,containerID,width=960,height=600){
 
 	function ticked() {
         link
-            .attr("x1", function (d) {return d.source.x;})
-            .attr("y1", function (d) {return d.source.y;})
-            .attr("x2", function (d) {return d.target.x;})
-            .attr("y2", function (d) {return d.target.y;});
+            .attr("x1", function (d) {return getX(d.source.x);})
+            .attr("y1", function (d) {return getY(d.source.y);})
+            .attr("x2", function (d) {return getX(d.target.x);})
+            .attr("y2", function (d) {return getY(d.target.y);});
 
-        node
-            .attr("transform", function (d) {return "translate(" + d.x + ", " + d.y + ")";});
+        node.attr("transform",
+					function (d) {
+						var dx = getX(d.x);
+						var dy = getY(d.y);
+						return "translate(" + dx + ", " + dy + ")";
+					}
+				  );
+		
+		function getX(x){
+			var dx = x;
+			if (dx<20)  dx = 20;
+			if (dx>width-20) dx = width-20;
+			return dx;
+		}
+		
+		function getY(y){
+			var dy = y;
+			if (dy<20)  dy = 20;
+			if (dy>height-20) dy = height-20;
+			return dy;
+		}
 
     }
 
 
     function dragstarted(event) {
         if (!event.active) simulation.alphaTarget(0.3).restart()
-        event.subject.fx = event.subject.x;
+        event.subject.fx = event.subject.x ;
     	event.subject.fy = event.subject.y;
     }
 
