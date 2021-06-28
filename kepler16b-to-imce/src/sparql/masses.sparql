@@ -3,19 +3,22 @@ PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
 PREFIX mission:     <http://imce.jpl.nasa.gov/foundation/mission#>
 PREFIX mechanical:	<http://imce.jpl.nasa.gov/discipline/mechanical#>
 
-SELECT DISTINCT ?mass ?c1 ?c1_id ?c2 ?c2_id
+SELECT DISTINCT ?c1 ?c1_id ?c1_mass ?c2 ?c2_id
 
 WHERE {
-    ?magnitude
-      a mechanical:MassMagnitude ;
-      metrology:hasDoubleNumber ?mass ;
-      metrology:isMagnitudeOf [
-        metrology:isQuantityOf ?c1
-      ] .
-    ?c1 base:hasIdentifier ?c1_id .
+	?c1 a mission:Component ;
+    	base:hasIdentifier ?c1_id .
     OPTIONAL {
+	    ?magnitude
+	      a mechanical:MassMagnitude ;
+	      metrology:hasDoubleNumber ?c1_mass ;
+	      metrology:isMagnitudeOf [
+	        metrology:isQuantityOf ?c1
+	      ] .
+	}
+	OPTIONAL {
 	    ?c1	base:isContainedIn ?c2 .
 	    ?c2 base:hasIdentifier ?c2_id .
-	}    
+	}
 }
 ORDER BY ?c1_id ?c2_id
