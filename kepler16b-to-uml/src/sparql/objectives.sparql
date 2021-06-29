@@ -1,0 +1,10 @@
+PREFIX uml:        <http://www.eclipse.org/uml2/5.0.0/UML#>
+
+SELECT DISTINCT ?o_id ?o_name
+
+WHERE {
+	?o_id 
+      a uml:Class ;
+      uml:namedElement_name ?o_name .
+}
+ORDER BY ?o_id

@@ -1,0 +1,37 @@
+PREFIX oml:        <http://opencaesar.io/oml#>
+PREFIX uml:        <http://www.eclipse.org/uml2/5.0.0/UML#>
+PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
+PREFIX mission:     <http://imce.jpl.nasa.gov/foundation/mission#>
+
+SELECT DISTINCT ?m_id ?m_name ?o1_id ?o2_id
+
+WHERE {
+	?m a uml:Class ;
+		a mission:Mission ;
+		base:hasIdentifier ?m_id ;
+		base:hasCanonicalName ?m_name .
+	  
+	?dep a uml:Dependency ;
+		a mission:Pursues ;
+		uml:dependency_client ?m ;
+		uml:dependency_supplier ?o1 .
+		
+	?assoc a uml:Association ;
+		a base:Aggregates ;
+		uml:association_memberEnd [
+			uml:typedElement_type ?o1
+		] ;
+		uml:association_memberEnd [
+			uml:typedElement_type ?o2
+		] ;
+		oml:hasTarget ?o2 .
+
+	?o1 a mission:Objective ;
+        base:hasIdentifier ?o1_id .
+
+	?o2 a mission:Objective ;
+        base:hasIdentifier ?o2_id .
+
+}
+ORDER BY ?m_id ?o1_id ?o2_id
+

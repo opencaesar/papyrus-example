@@ -1,0 +1,14 @@
+PREFIX uml:        <http://www.eclipse.org/uml2/5.0.0/UML#>
+PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
+PREFIX mission:     <http://imce.jpl.nasa.gov/foundation/mission#>
+
+SELECT DISTINCT ?c ?i
+
+WHERE {
+	?d a uml:Dependency ;
+		a mission:Presents ;
+		uml:dependency_client ?c ;
+		uml:dependency_supplier ?i .
+}
+ORDER BY ?c ?i
+

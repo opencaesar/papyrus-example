@@ -1,0 +1,29 @@
+PREFIX uml:        <http://www.eclipse.org/uml2/5.0.0/UML#>
+
+SELECT DISTINCT ?c1 ?c1_id ?c1_mass ?c2 ?c2_id
+
+WHERE {
+	?c1 a uml:Class ;
+		uml:namedElement_name ?c1_id .
+	OPTIONAL {
+		?c2 a uml:Class ;
+			uml:namedElement_name ?c2_id .
+		?containsAssoc a uml:Association ;
+			uml:association_memberEnd [
+				uml:typedElement_type ?c2
+			] ;
+			uml:association_memberEnd [
+				uml:typedElement_type ?c1
+			] .
+	}
+    OPTIONAL {
+	   	?quantityOfDep a uml:Dependency ;
+	   		uml:dependency_client ?q ;
+	   		uml:dependency_supplier ?c1 .
+
+	   	?magnitudeOfDep a uml:Dependency ;
+	   		uml:dependency_client ?m ;
+	   		uml:dependency_supplier ?q .
+	}
+}
+ORDER BY ?c1_id ?c2_id
