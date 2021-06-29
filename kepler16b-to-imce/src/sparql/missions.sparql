@@ -5,9 +5,9 @@ SELECT DISTINCT ?m_id ?m_name ?o1_id ?o2_id
 
 WHERE {
 	?m a mission:Mission ;
-	  base:hasIdentifier ?m_id ;
-	  base:hasCanonicalName ?m_name;
-	  mission:pursues [
+		base:hasIdentifier ?m_id ;
+		base:hasCanonicalName ?m_name;
+		mission:pursues [
  
         a mission:Objective ;
         base:hasIdentifier ?o1_id ;

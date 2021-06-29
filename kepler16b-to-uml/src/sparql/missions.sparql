@@ -1,0 +1,22 @@
+PREFIX uml:        <http://www.eclipse.org/uml2/5.0.0/UML#>
+
+SELECT DISTINCT ?m_id ?m_name ?o1_id ?o2_id
+
+WHERE {
+	?m_id a uml:Class ;
+	  uml:namedElement_name ?m_name .
+	  
+	?dep a uml:Dependency ;
+		uml:dependency_client ?m_id ;
+		uml:dependency_supplier ?o1_id . 
+		
+	?assoc a uml:Association ;
+		uml:association_memberEnd [
+			uml:typedElement_type ?o1_id
+		] ;
+		uml:association_memberEnd [
+			uml:typedElement_type ?o2_id
+		] .
+}
+ORDER BY ?m_id ?o1_id ?o2_id
+

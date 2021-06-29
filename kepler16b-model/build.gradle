@@ -128,29 +128,6 @@ task owlReason(type:io.opencaesar.owl.reason.OwlReasonTask, group:"oml", depends
 }
 
 /*
- * A task to load an OWL catalog to a Fuseki dataset endpoint
- */
-task owlLoad(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml") {
-    catalogPath = file('build/owl/catalog.xml')
-    endpointURL = "http://localhost:3030/$dataset.name".toString()
-    fileExtensions = ['owl', 'ttl']
-    iris = [
-        "$dataset.rootOntologyIri/classes".toString(),
-        "$dataset.rootOntologyIri/properties".toString(),
-        "$dataset.rootOntologyIri/individuals".toString()
-    ]
-}
-
-/*
- * A task to run a set of SPARQL queries on a Fuseki dataset endpoint
- */
-task owlQuery(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad) {
-    endpointURL = "http://localhost:3030/$dataset.name".toString()
-    queryPath = file('src/sparql')
-    resultPath = file('build/frames')
-}
-
-/*
  * Publish artifact to maven
  */
 task omlZip(type: Zip, group:"oml") {

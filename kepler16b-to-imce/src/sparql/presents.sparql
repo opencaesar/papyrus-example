@@ -6,3 +6,4 @@ SELECT DISTINCT ?c ?i
 WHERE {
 	?c mission:presents ?i
 }
+ORDER BY ?c ?i
