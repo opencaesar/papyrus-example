@@ -153,7 +153,14 @@ function drawTreeMap(data, containerID, nameSeperators = [],WIDTH = 800, HEIGHT=
         .attr('y', (d,i) => i ? '2.5em' : '1.15em')
         .text(d => d)
 
-  })
-	
+ 	 });
 
+	svg.call(d3.zoom()
+      .extent([[0, 0], [width, height]])
+      .scaleExtent([1, 8])
+      .on("zoom", zoomed));
+
+	function zoomed({transform}) {
+	   g.attr("transform", transform);
+	}
 }
