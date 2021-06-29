@@ -1,61 +1,62 @@
 
-function getOrCreateNode(id, name, dict){
-	var node = dict[id];
-	if (!node){
-		node = {}
-		node.name = name;
-		dict[id] = node;
-	}
-	return node;
-}
-
-function addNode(parentid, id, name, dict){
-	var parent = dict[parentid];
-	var node = dict[id];
-	if (!node){
-		node = getOrCreateNode(id,name,dict);
-		if (!parent.children){
-			parent.children = [];
-		}
-		parent.children.push(node);
-	}
-	return node;
-}
-
-function getName(name, nameSeperators){
-	var newName = name;
-	for (const nameSeperator of nameSeperators){
-		var index = newName.lastIndexOf(nameSeperator);
-		if (index!=-1){
-			return name.substring(index+1);
-		}
-	}
-	return newName;
-}
-
-function transform(data,nameSeperators){
-	var idToNode = [];
-	var root = getOrCreateNode("-1","root",idToNode);
-	var columns = data.head.vars;
-	data.results.bindings.forEach(item => {
-		var containerID = item[columns[4]] ? item[columns[4]].value : "-1";
-		var containerName = getName(item[columns[3]] ? item[columns[3]].value : "root",nameSeperators) ;
-		var childID = item[columns[1]].value;
-		var childeName = getName(item[columns[0]] ? item[columns[0]].value : "",nameSeperators);
-		var mass = item[columns[2]]?item[columns[2]].value : "0";
-		addNode("-1",containerID,containerName,idToNode);
-		var child = addNode(containerID,childID,childeName,idToNode);
-		child.value = parseInt(mass);
-	});	
-	return root;
-}
-
-function getVal(d){
-	return d.value + d.data.value;
-}
 
 function drawTreeMap(data, containerID, nameSeperators = [],WIDTH = 800, HEIGHT=800) {
 
+	function getOrCreateNode(id, name, dict){
+		var node = dict[id];
+		if (!node){
+			node = {}
+			node.name = name;
+			dict[id] = node;
+		}
+		return node;
+	}
+
+	function addNode(parentid, id, name, dict){
+		var parent = dict[parentid];
+		var node = dict[id];
+		if (!node){
+			node = getOrCreateNode(id,name,dict);
+			if (!parent.children){
+				parent.children = [];
+			}
+			parent.children.push(node);
+		}
+		return node;
+	}
+
+	function getName(name, nameSeperators){
+		var newName = name;
+		for (const nameSeperator of nameSeperators){
+			var index = newName.lastIndexOf(nameSeperator);
+			if (index!=-1){
+				return name.substring(index+1);
+			}
+		}
+		return newName;
+	}
+	
+	function transform(data,nameSeperators){
+		var idToNode = [];
+		var root = getOrCreateNode("-1","root",idToNode);
+		var columns = data.head.vars;
+		data.results.bindings.forEach(item => {
+			var containerID = item[columns[4]] ? item[columns[4]].value : "-1";
+			var containerName = getName(item[columns[3]] ? item[columns[3]].value : "root",nameSeperators) ;
+			var childID = item[columns[1]].value;
+			var childeName = getName(item[columns[0]] ? item[columns[0]].value : "",nameSeperators);
+			var mass = item[columns[2]]?item[columns[2]].value : "0";
+			addNode("-1",containerID,containerName,idToNode);
+			var child = addNode(containerID,childID,childeName,idToNode);
+			child.value = parseInt(mass);
+		});	
+		return root;
+	}
+	
+	function getVal(d){
+		return d.value + (d.children ? d.data.value : 0);
+	}
+	
 	var treeData = transform(data, nameSeperators);
 	
 	var margin = {top: 10, right: 10, bottom: 10, left: 10},

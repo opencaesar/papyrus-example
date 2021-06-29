@@ -4,6 +4,26 @@
 <meta charset="ISO-8859-1">
 <title>Masses Pattern</title>
 <style>
+.node {
+		cursor: pointer;
+	}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
 #table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -40,6 +60,7 @@
 <!-- load the code -->
 <script src="../js/visualizations/D3Table.js"></script>
 <script src="../js/visualizations/D3TreeMap.js"></script>
+<script src="../js/visualizations/D3Tree.js"></script>
 <div id='description'>
 <h1>Description of Masses pattern:</h1>
 <p>This is some text explaining it.</p>
@@ -51,6 +72,9 @@
 <h2>Showing it as a TreeMap</h2>
 <p>small description of the treemap</p> 
 <div id='treeMapViz'></div>
+<h2>Showing it as a Tree</h2>
+<p>small description of the tree</p> 
+<div id='treeViz'></div>
 <script src="../js/controllers/masses.js"></script>
 </div>
 </body>

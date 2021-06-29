@@ -1,57 +1,58 @@
-/**
- * D3 implementation of an interactive tree
- */
-function getOrCreateNode(id, name, dict){
-	var node = dict[id];
-	if (!node){
-		node = {}
-		node.id  = id;
-		node.name = name;
-		dict[id] = node;
-	}
-	return node;
-}
 
-function addNode(parentid, id, name, dict){
-	var parent = dict[parentid];
-	var node = dict[id];
-	if (!node){
-		node = getOrCreateNode(id,name,dict);
-		node.parent = parent.id;
-		if (!parent.children){
-			parent.children = [];
+
+function drawTree(data, containerID,nameSeperators = [],transofrmData = true, _width=960, _height=500) {
+
+	function getOrCreateNode(id, name, dict){
+		var node = dict[id];
+		if (!node){
+			node = {}
+			node.id  = id;
+			node.name = name;
+			dict[id] = node;
 		}
-		parent.children.push(node);
+		return node;
 	}
-	return node;
-}
-
-function transform(data){
-	var tree = [];
-	var idToNode = [];
-	var root = getOrCreateNode("-1","Missions",idToNode);
-	root.parent = "null";
-	tree.push(root);
-	var columns = data.head.vars;
-	data.results.bindings.forEach(item => {
-		var missionID = item[columns[0]].value;
-		var missionsName = item[columns[1]].value;
-		var childID = item[columns[2]].value;
-		var _childID = missionID+"."+childID;
-		var grandChildID = item[columns[3]].value;
-		var _grandChildID = _childID + "." + grandChildID;
-		addNode("-1",missionID,missionsName,idToNode);
-		addNode(missionID,_childID,childID,idToNode);
-		addNode(_childID,_grandChildID,grandChildID,idToNode);
-		
-	});	
-	return tree;
-}
-
-
-function drawTree(data, containerID, _width=960, _height=500) {
 	
-	var treeData = transform(data);
+	function addNode(parentid, id, name, dict){
+		var parent = dict[parentid];
+		var node = dict[id];
+		if (!node){
+			node = getOrCreateNode(id,name,dict);
+			node.parent = parent.id;
+			if (!parent.children){
+				parent.children = [];
+			}
+			parent.children.push(node);
+		}
+		return node;
+	}
+	
+	function transform(data){
+		var idToNode = [];
+		var root = getOrCreateNode("-1","Missions",idToNode);
+		root.parent = "null";
+		var columns = data.head.vars;
+		data.results.bindings.forEach(item => {
+			var missionID = item[columns[0]].value;
+			var missionsName = item[columns[1]].value;
+			var childID = item[columns[2]].value;
+			var _childID = missionID+"."+childID;
+			var grandChildID = item[columns[3]].value;
+			var _grandChildID = _childID + "." + grandChildID;
+			addNode("-1",missionID,missionsName,idToNode);
+			addNode(missionID,_childID,childID,idToNode);
+			addNode(_childID,_grandChildID,grandChildID,idToNode);
+			
+		});	
+		return root;
+	}
+	
+	function getVal(d){
+		return d.value + (d.children ? d.data.value : 0);
+	}
+
+	
+	var treeData = transofrmData ? transform(data, nameSeperators):data;
 
 	// ************** Generate the tree diagram	 *****************
 	var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -59,117 +60,135 @@ function drawTree(data, containerID, _width=960, _height=500) {
 		height = _height - margin.top - margin.bottom;
 		
 	var i = 0,
-		duration = 750,
 		root;
-	
-	var tree = d3.layout.tree().size([height, width]);
-	
-	var diagonal = d3.svg.diagonal()
-		.projection(function(d) { return [d.y, d.x]; });
+		
+		
+	var root = d3.hierarchy(treeData)
+			.sum(d => d.value)
+			.sort((a, b) => b.value - a.value)
+			
+	var tree = d3.tree();
+	tree.size([height, width]); 
+	var diagonal = d3.linkHorizontal().x(d => d.y).y(d => d.x)
 	
 	var svg = d3.select(containerID).append("svg")
 		.attr("width", width + margin.right + margin.left)
 		.attr("height", height + margin.top + margin.bottom)
 	  .append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-	
-	root = treeData[0];
+
+
+  	const gLink = svg.append("g")
+      .attr("fill", "none")
+      .attr("stroke", "#555")
+      .attr("stroke-opacity", 0.4)
+      .attr("stroke-width", 1.5);
+
 	root.x0 = height / 2;
 	root.y0 = 0;
-	  
-	update(root);
-	
-	d3.select(self.frameElement).style("height", "500px");
-	
+
 	function update(source) {
+	    const duration = d3.event && d3.event.altKey ? 2500 : 250;
+	    const nodes = root.descendants().reverse();
+	    const links = root.links();
 	
-	  // Compute the new tree layout.
-	  var nodes = tree.nodes(root).reverse(),
-		  links = tree.links(nodes);
+	    // Compute the new tree layout.
+	    tree(root);
 	
-	  // Normalize for fixed-depth.
-	  nodes.forEach(function(d) { d.y = d.depth * 180; });
+	    let left = root;
+	    let right = root;
+	    root.eachBefore(node => {
+	      if (node.x < left.x) left = node;
+	      if (node.x > right.x) right = node;
+	    });
+
+		// Normalize for fixed-depth.
+	    nodes.forEach(function(d) { d.y = d.depth * 180; });
+
 	
-	  // Update the nodes…
-	  var node = svg.selectAll("g.node")
+	    const height = right.x - left.x + margin.top + margin.bottom;
+	
+	    const transition = svg.transition()
+	        .duration(duration);
+	
+	 	// Update the nodes…
+	  	var node = svg.selectAll("g.node")
 		  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
 	
-	  // Enter any new nodes at the parent's previous position.
-	  var nodeEnter = node.enter().append("g")
-		  .attr("class", "node")
-		  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-		  .on("click", click);
+	    // Enter any new nodes at the parent's previous position.
+	    const nodeEnter = node.enter().append("g")
+	        .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+		  	.attr("class", "node")
+	        .on("click", click);
 	
-	  nodeEnter.append("circle")
-		  .attr("r", 1e-6)
+	    nodeEnter.append("circle")
+ 		  .attr("r", 1e-6)
 		  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
 	
-	  nodeEnter.append("text")
-		  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
-		  .attr("dy", ".35em")
-		  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-		  .text(function(d) { return d.name; })
-		  .style("fill-opacity", 1e-6);
+	    nodeEnter.append("text")
+	        .attr("dy", "0.35em")
+	        .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	        .text(d => transofrmData ? d.data.name : (d.data.name + "(" + getVal(d) + ")"));
 	
-	  // Transition nodes to their new position.
-	  var nodeUpdate = node.transition()
-		  .duration(duration)
-		  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
-	
-	  nodeUpdate.select("circle")
+	    // Transition nodes to their new position.
+	    const nodeUpdate = node.merge(nodeEnter).transition(transition)
+		  	.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+		nodeUpdate.select("circle")
 		  .attr("r", 10)
 		  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-	
-	  nodeUpdate.select("text")
+
+		nodeUpdate.select("text")
 		  .style("fill-opacity", 1);
-	
-	  // Transition exiting nodes to the parent's new position.
-	  var nodeExit = node.exit().transition()
-		  .duration(duration)
+	    
+		// Transition exiting nodes to the parent's new position.
+	    const nodeExit = node.exit().transition(transition)
 		  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
 		  .remove();
-	
-	  nodeExit.select("circle")
+
+		nodeExit.select("circle")
 		  .attr("r", 1e-6);
 	
-	  nodeExit.select("text")
+	  	nodeExit.select("text")
 		  .style("fill-opacity", 1e-6);
 	
-	  // Update the links…
-	  var link = svg.selectAll("path.link")
-		  .data(links, function(d) { return d.target.id; });
+	    // Update the links…
+	    const link = gLink.selectAll("path")
+	      .data(links, d => d.target.id);
 	
-	  // Enter any new links at the parent's previous position.
-	  link.enter().insert("path", "g")
-		  .attr("class", "link")
-		  .attr("d", function(d) {
-			var o = {x: source.x0, y: source.y0};
-			return diagonal({source: o, target: o});
-		  });
+	    // Enter any new links at the parent's previous position.
+	    const linkEnter = link.enter().append("path")
+			.attr("class", "link")
+	        .attr("d", d => {
+	          const o = {x: source.x0, y: source.y0};
+	          return diagonal({source: o, target: o});
+	        });
 	
-	  // Transition links to their new position.
-	  link.transition()
-		  .duration(duration)
-		  .attr("d", diagonal);
+	    // Transition links to their new position.
+	    link.merge(linkEnter).transition(transition)
+	        .attr("d", diagonal);
 	
-	  // Transition exiting nodes to the parent's new position.
-	  link.exit().transition()
-		  .duration(duration)
-		  .attr("d", function(d) {
-			var o = {x: source.x, y: source.y};
-			return diagonal({source: o, target: o});
-		  })
-		  .remove();
+	    // Transition exiting nodes to the parent's new position.
+	    link.exit().transition(transition).remove()
+	        .attr("d", d => {
+	          const o = {x: source.x, y: source.y};
+	          return diagonal({source: o, target: o});
+	        });
 	
-	  // Stash the old positions for transition.
-	  nodes.forEach(function(d) {
-		d.x0 = d.x;
-		d.y0 = d.y;
-	  });
-	}
-	
+	    // Stash the old positions for transition.
+	    root.eachBefore(d => {
+	      d.x0 = d.x;
+	      d.y0 = d.y;
+	    });
+	 }
+
+  	update(root);
+
 	// Toggle children on click.
-	function click(d) {
+	function click(event, d) {
 	  if (d.children) {
 		d._children = d.children;
 		d.children = null;
