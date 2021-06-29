@@ -2,40 +2,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Presents Pattern</title>
+<title>Masses Pattern</title>
 <style>
-.node {}
-.link { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-
-.text {
-  text-anchor: middle;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  fill: #666;
-  font-size: 16px;
-}
-
 #table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -67,25 +35,23 @@
 <body>
 <!-- load d3  -->
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-
 <!-- load the data -->
-<script type="text/javascript" src="../data/presents.json"></script>
+<script type="text/javascript" src="../data/masses.json"></script>
 <!-- load the code -->
 <script src="../js/D3Table.js"></script>
-<script src="../js/D3TreeTable.js"></script>
-<script src="../js/D3Graph.js"></script>
+<script src="../js/D3TreeMap.js"></script>
 <div id='description'>
-<h1>Description of Presents pattern:</h1>
+<h1>Description of Masses pattern:</h1>
 <p>This is some text explaining it.</p>
 <p></p>
 <h2>Showing it as table </h2>
 <p>small description of the table</p>
 <div id='tableViz'></div>
 <p></p>
-<h2>Showing it as a Graph</h2>
-<p>small description of the graph</p> 
-<div id='graphViz'></div>
-<script src="../js/presents.js"></script>
+<h2>Showing it as a TreeMap</h2>
+<p>small description of the treemap</p> 
+<div id='treeMapViz'></div>
+<script src="../js/masses.js"></script>
 </div>
 </body>
 </html>

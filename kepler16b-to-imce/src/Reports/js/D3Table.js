@@ -27,7 +27,7 @@ function tabulate(data, containerID) {
 	var cells = rows.selectAll('td')
 	  .data(function (row) {
 	    return columns.map(function (column) {
-	      return {column: column, value: row[column].value};
+	      return {column: column, value: row[column] ? row[column].value : ""};
 	    });
 	  })
 	  .enter()

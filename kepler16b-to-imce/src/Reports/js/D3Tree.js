@@ -26,7 +26,7 @@ function addNode(parentid, id, name, dict){
 	return node;
 }
 
-function transforme(data){
+function transform(data){
 	var tree = [];
 	var idToNode = [];
 	var root = getOrCreateNode("-1","Missions",idToNode);
@@ -51,7 +51,7 @@ function transforme(data){
 
 function drawTree(data, containerID, _width=960, _height=500) {
 	
-	var treeData = transforme(data);
+	var treeData = transform(data);
 
 	// ************** Generate the tree diagram	 *****************
 	var margin = {top: 20, right: 120, bottom: 20, left: 120},

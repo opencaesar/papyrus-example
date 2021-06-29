@@ -1,0 +1,102 @@
+var data = { "head": {
+    "vars": [ "c1" , "c1_id" , "c1_mass" , "c2" , "c2_id" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-launch-system" } ,
+        "c1_id": { "type": "literal" , "value": "C.01" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "2000.0" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c1_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-power-subsystem" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.01" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "297.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-harness" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.02" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "138.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-thermal-subsystem" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.03" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "307.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-command-and-data-handling-subsystem" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.04" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "147.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-telecom-subsystem" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.05" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "316.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-guidance-navigation-control-subsystem" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.06" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "156.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-mechanical-subsystem" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.07" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "325.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacraft-flight-software" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.08" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "165.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-propulsion-subsystem" } ,
+        "c1_id": { "type": "literal" , "value": "C.02.09" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "6.0" } ,
+        "c2": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-spacecraft" } ,
+        "c2_id": { "type": "literal" , "value": "C.02" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#orbiter-ground-data-system" } ,
+        "c1_id": { "type": "literal" , "value": "C.03" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#mission-operations-system" } ,
+        "c1_id": { "type": "literal" , "value": "C.04" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#lander-launch-system" } ,
+        "c1_id": { "type": "literal" , "value": "C.05" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "3000.0" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#lander-spacecraft" } ,
+        "c1_id": { "type": "literal" , "value": "C.06" } ,
+        "c1_mass": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#double" , "value": "1200.0" }
+      } ,
+      { 
+        "c1": { "type": "uri" , "value": "http://opencaesar.io/kepler16b/components#lander-ground-data-system" } ,
+        "c1_id": { "type": "literal" , "value": "C.07" }
+      }
+    ]
+  }
+}
