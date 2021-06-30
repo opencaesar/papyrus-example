@@ -1,6 +1,6 @@
 
 
-function drawTree(data, containerID,nameSeperators = [],transofrmData = true, _width=960, _height=500) {
+function drawTree(data, containerID,nameSeperators = [],transformData = true, _width=960, _height=500) {
 
 	function getOrCreateNode(id, name, dict){
 		var node = dict[id];
@@ -52,7 +52,7 @@ function drawTree(data, containerID,nameSeperators = [],transofrmData = true, _w
 	}
 
 	
-	var treeData = transofrmData ? transform(data, nameSeperators):data;
+	var treeData = transformData ? transform(data, nameSeperators):data;
 
 	// ************** Generate the tree diagram	 *****************
 	var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -131,7 +131,12 @@ function drawTree(data, containerID,nameSeperators = [],transofrmData = true, _w
 	        .attr("dy", "0.35em")
 	        .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
 	        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-	        .text(d => transofrmData ? d.data.name : (d.data.name + "(" + getVal(d) + ")"));
+	        .text(function(d){
+				if (transformData || !d.parent){
+					return d.data.name;
+				} 
+				return d.data.name + "(" + getVal(d) + ")";
+			});
 	
 	    // Transition nodes to their new position.
 	    const nodeUpdate = node.merge(nodeEnter).transition(transition)
