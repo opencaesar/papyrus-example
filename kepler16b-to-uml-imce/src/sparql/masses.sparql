@@ -1,0 +1,44 @@
+PREFIX oml:        <http://opencaesar.io/oml#>
+PREFIX uml:        <http://www.eclipse.org/uml2/5.0.0/UML#>
+PREFIX metrology:	<http://iupac.org/metrology#>
+PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
+PREFIX mission:     <http://imce.jpl.nasa.gov/foundation/mission#>
+PREFIX mechanical:	<http://imce.jpl.nasa.gov/discipline/mechanical#>
+
+SELECT DISTINCT ?c1 ?c1_id ?c1_mass ?c2 ?c2_id
+
+WHERE {
+	?c1 a uml:Class ;
+		a mission:Component ;
+    	base:hasIdentifier ?c1_id .
+	OPTIONAL {
+		?c2 a uml:Class ;
+			a mission:Component ;
+			base:hasIdentifier ?c2_id .
+		?containsAssoc a uml:Association ;
+			a base:Contains ;
+			uml:association_memberEnd [
+				uml:typedElement_type ?c2
+			] ;
+			uml:association_memberEnd [
+				uml:typedElement_type ?c1
+			] ;
+			oml:hasSource ?c2 ;
+			oml:hasTarget ?c1 .
+			
+	}
+    OPTIONAL {
+	   	?quantityOfDep a uml:Dependency ;
+	   		a metrology:IsQuantityOf ;
+	   		uml:dependency_client ?q ;
+	   		uml:dependency_supplier ?c1 .
+
+	   	?magnitudeOfDep a uml:Dependency ;
+	   		a metrology:IsMagnitudeOf ;
+	   		uml:dependency_client [
+	   			metrology:hasDoubleNumber ?c1_mass
+	   		] ;
+	   		uml:dependency_supplier ?q .
+	}
+}
+ORDER BY ?c1_id ?c2_id
